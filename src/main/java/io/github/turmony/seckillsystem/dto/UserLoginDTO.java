@@ -1,7 +1,7 @@
 package io.github.turmony.seckillsystem.dto;
 
 import lombok.Data;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * 用户登录DTO

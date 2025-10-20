@@ -24,21 +24,22 @@ spring:
       test-on-borrow: false
       test-on-return: false
 
-#  # Redis配置
-#  redis:
-#    host: localhost
-#    port: 6379
-#    password:
-#    database: 0
-#    timeout: 3000
-#    lettuce:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        min-idle: 0
-#        max-wait: -1ms
-#
-#  # RabbitMQ配置
+  # Redis配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  #    password:
+      database: 0
+      timeout: 3000
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+
+  # RabbitMQ配置
 #  rabbitmq:
 #    host: localhost
 #    port: 5672
@@ -66,12 +67,12 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
 
 # Redisson配置
-redisson:
-  address: redis://localhost:6379
-  password:
-  database: 0
-  connection-pool-size: 64
-  connection-minimum-idle-size: 10
+#redisson:
+#  address: redis://localhost:6379
+#  password:
+#  database: 0
+#  connection-pool-size: 64
+#  connection-minimum-idle-size: 10
 
 # 日志配置
 logging:

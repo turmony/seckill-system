@@ -58,3 +58,509 @@
 2025-10-20 15:07:34.400  INFO 17996 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-10-20 15:07:34.400  INFO 17996 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-10-20 15:07:34.401  INFO 17996 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-20 16:28:12.438  INFO 16004 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 16004 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 16:28:12.440  INFO 16004 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 16:28:12.979  INFO 16004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 16:28:12.981  INFO 16004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 16:28:12.994  INFO 16004 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-20 16:28:13.470  INFO 16004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 16:28:13.476  INFO 16004 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 16:28:13.476  INFO 16004 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 16:28:13.543  INFO 16004 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 16:28:13.544  INFO 16004 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1076 ms
+2025-10-20 16:28:13.586  INFO 16004 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 16:28:13.821  INFO 16004 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 16:28:14.107  INFO 16004 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 16:28:18.882  WARN 16004 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'seckillGoodsInitializer': Unsatisfied dependency expressed through field 'redisUtil'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+2025-10-20 16:28:18.883  INFO 16004 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-10-20 16:28:18.896  INFO 16004 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2025-10-20 16:28:18.898  INFO 16004 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-10-20 16:28:18.917  INFO 16004 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-10-20 16:28:18.928 ERROR 16004 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'seckillGoodsInitializer': Unsatisfied dependency expressed through field 'redisUtil'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:408) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:929) ~[spring-context-5.3.31.jar:5.3.31]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:591) ~[spring-context-5.3.31.jar:5.3.31]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:409) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:713) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:693) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:408) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710) ~[spring-beans-5.3.31.jar:5.3.31]
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:536) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:710) ~[spring-beans-5.3.31.jar:5.3.31]
+	... 34 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:801) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:536) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788) ~[spring-beans-5.3.31.jar:5.3.31]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisson' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:481) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:911) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:788) ~[spring-beans-5.3.31.jar:5.3.31]
+	... 61 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redisson' threw exception; nested exception is org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.31.jar:5.3.31]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-5.3.31.jar:5.3.31]
+	... 75 common frames omitted
+Caused by: org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.redisson.connection.pool.ConnectionPool.lambda$createConnection$0(ConnectionPool.java:129) ~[redisson-3.23.5.jar:3.23.5]
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2162) ~[na:na]
+	at org.redisson.connection.pool.ConnectionPool.promiseFailure(ConnectionPool.java:281) ~[redisson-3.23.5.jar:3.23.5]
+	at org.redisson.connection.pool.ConnectionPool.lambda$createConnection$6(ConnectionPool.java:245) ~[redisson-3.23.5.jar:3.23.5]
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2162) ~[na:na]
+	at org.redisson.client.RedisClient$1$1.run(RedisClient.java:236) ~[redisson-3.23.5.jar:3.23.5]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:470) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.101.Final.jar:4.1.101.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.util.concurrent.CompletionException: org.redisson.client.RedisException: ERR AUTH <password> called without any password configured for the default user. Are you sure your configuration is correct?. channel: [id: 0x30f98122, L:/127.0.0.1:50612 - R:localhost/127.0.0.1:6379] command: (AUTH), params: (password masked)
+	at java.base/java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:368) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeRelay(CompletableFuture.java:377) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRelay.tryFire(CompletableFuture.java:1097) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2162) ~[na:na]
+	at org.redisson.client.protocol.CommandData.tryFailure(CommandData.java:87) ~[redisson-3.23.5.jar:3.23.5]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:381) ~[redisson-3.23.5.jar:3.23.5]
+	at org.redisson.client.handler.CommandDecoder.decodeCommand(CommandDecoder.java:205) ~[redisson-3.23.5.jar:3.23.5]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:144) ~[redisson-3.23.5.jar:3.23.5]
+	at org.redisson.client.handler.CommandDecoder.decode(CommandDecoder.java:120) ~[redisson-3.23.5.jar:3.23.5]
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:529) ~[netty-codec-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.handler.codec.ReplayingDecoder.callDecode(ReplayingDecoder.java:366) ~[netty-codec-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290) ~[netty-codec-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.101.Final.jar:4.1.101.Final]
+	... 4 common frames omitted
+Caused by: org.redisson.client.RedisException: ERR AUTH <password> called without any password configured for the default user. Are you sure your configuration is correct?. channel: [id: 0x30f98122, L:/127.0.0.1:50612 - R:localhost/127.0.0.1:6379] command: (AUTH), params: (password masked)
+	... 23 common frames omitted
+
+2025-10-20 16:31:00.054  INFO 28612 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 28612 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 16:31:00.056  INFO 28612 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 16:31:00.587  INFO 28612 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 16:31:00.589  INFO 28612 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 16:31:00.604  INFO 28612 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-20 16:31:01.096  INFO 28612 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 16:31:01.103  INFO 28612 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 16:31:01.103  INFO 28612 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 16:31:01.178  INFO 28612 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 16:31:01.179  INFO 28612 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1095 ms
+2025-10-20 16:31:01.220  INFO 28612 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 16:31:01.433  INFO 28612 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 16:31:01.714  INFO 28612 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 16:31:01.933  INFO 28612 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 16:31:01.997  INFO 28612 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 16:31:02.601  INFO 28612 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20 16:31:02.626  INFO 28612 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20 16:31:02.635  INFO 28612 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.853 seconds (JVM running for 3.1)
+2025-10-20 16:31:02.639  INFO 28612 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20 16:31:02.694  WARN 28612 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 数据库中没有秒杀商品数据
+2025-10-20 17:02:20.548  INFO 6652 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 6652 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 17:02:20.551  INFO 6652 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 17:02:21.078  INFO 6652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 17:02:21.080  INFO 6652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 17:02:21.093  INFO 6652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-20 17:02:21.567  INFO 6652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 17:02:21.573  INFO 6652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 17:02:21.573  INFO 6652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 17:02:21.644  INFO 6652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 17:02:21.644  INFO 6652 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1065 ms
+2025-10-20 17:02:21.687  INFO 6652 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 17:02:21.901  INFO 6652 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 17:02:22.181  INFO 6652 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 17:02:22.415  INFO 6652 --- [redisson-netty-2-6] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:02:22.478  INFO 6652 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:02:23.103  INFO 6652 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20 17:02:23.127  INFO 6652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20 17:02:23.135  INFO 6652 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.857 seconds (JVM running for 3.077)
+2025-10-20 17:02:23.139  INFO 6652 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20 17:02:23.231  INFO 6652 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-10-20 17:02:23.242 ERROR 6652 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NoClassDefFoundError: org/springframework/data/redis/connection/zset/Tuple
+	at org.redisson.spring.data.connection.RedissonConnection.<clinit>(RedissonConnection.java:2361) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.getConnection(RedissonConnectionFactory.java:113) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:193) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:211) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:191) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:97) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.DefaultValueOperations.set(DefaultValueOperations.java:305) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.util.RedisUtil.set(RedisUtil.java:96) ~[classes/:na]
+	at io.github.turmony.seckillsystem.config.SeckillGoodsInitializer.run(SeckillGoodsInitializer.java:50) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:765) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$2(SpringApplication.java:749) ~[spring-boot-2.7.18.jar:2.7.18]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:744) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ClassNotFoundException: org.springframework.data.redis.connection.zset.Tuple
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 26 common frames omitted
+
+2025-10-20 17:02:23.289  INFO 6652 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-10-20 17:02:23.294  INFO 6652 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2025-10-20 17:02:41.964  INFO 27156 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 27156 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 17:02:41.966  INFO 27156 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 17:02:42.484  INFO 27156 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 17:02:42.486  INFO 27156 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 17:02:42.499  INFO 27156 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-20 17:02:42.963  INFO 27156 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 17:02:42.968  INFO 27156 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 17:02:42.968  INFO 27156 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 17:02:43.035  INFO 27156 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 17:02:43.037  INFO 27156 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1044 ms
+2025-10-20 17:02:43.075  INFO 27156 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 17:02:43.296  INFO 27156 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 17:02:43.570  INFO 27156 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 17:02:43.791  INFO 27156 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:02:43.851  INFO 27156 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:02:44.429  INFO 27156 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20 17:02:44.452  INFO 27156 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20 17:02:44.462  INFO 27156 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.761 seconds (JVM running for 2.981)
+2025-10-20 17:02:44.465  INFO 27156 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20 17:02:44.552  INFO 27156 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-10-20 17:02:44.563 ERROR 27156 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NoClassDefFoundError: org/springframework/data/redis/connection/zset/Tuple
+	at org.redisson.spring.data.connection.RedissonConnection.<clinit>(RedissonConnection.java:2361) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.getConnection(RedissonConnectionFactory.java:113) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:193) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:211) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:191) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:97) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.DefaultValueOperations.set(DefaultValueOperations.java:305) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.util.RedisUtil.set(RedisUtil.java:96) ~[classes/:na]
+	at io.github.turmony.seckillsystem.config.SeckillGoodsInitializer.run(SeckillGoodsInitializer.java:50) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:765) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$2(SpringApplication.java:749) ~[spring-boot-2.7.18.jar:2.7.18]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:744) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ClassNotFoundException: org.springframework.data.redis.connection.zset.Tuple
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 26 common frames omitted
+
+2025-10-20 17:02:44.608  INFO 27156 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-10-20 17:02:44.613  INFO 27156 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2025-10-20 17:06:27.413  INFO 19820 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 19820 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 17:06:27.416  INFO 19820 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 17:06:27.968  INFO 19820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 17:06:27.969  INFO 19820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 17:06:27.983  INFO 19820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-20 17:06:28.478  INFO 19820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 17:06:28.485  INFO 19820 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 17:06:28.485  INFO 19820 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 17:06:28.557  INFO 19820 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 17:06:28.557  INFO 19820 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1112 ms
+2025-10-20 17:06:28.602  INFO 19820 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 17:06:28.827  INFO 19820 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 17:06:29.104  INFO 19820 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 17:06:29.332  INFO 19820 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:06:29.394  INFO 19820 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:06:30.013  INFO 19820 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20 17:06:30.037  INFO 19820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20 17:06:30.047  INFO 19820 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.918 seconds (JVM running for 3.169)
+2025-10-20 17:06:30.050  INFO 19820 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20 17:06:30.146  INFO 19820 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-10-20 17:06:30.157 ERROR 19820 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NoClassDefFoundError: org/springframework/data/redis/connection/zset/Tuple
+	at org.redisson.spring.data.connection.RedissonConnection.<clinit>(RedissonConnection.java:2361) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.getConnection(RedissonConnectionFactory.java:113) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:193) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:211) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:191) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:97) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.DefaultValueOperations.set(DefaultValueOperations.java:305) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.util.RedisUtil.set(RedisUtil.java:96) ~[classes/:na]
+	at io.github.turmony.seckillsystem.config.SeckillGoodsInitializer.run(SeckillGoodsInitializer.java:50) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:765) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$2(SpringApplication.java:749) ~[spring-boot-2.7.18.jar:2.7.18]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:744) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ClassNotFoundException: org.springframework.data.redis.connection.zset.Tuple
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 26 common frames omitted
+
+2025-10-20 17:06:30.203  INFO 19820 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-10-20 17:06:30.207  INFO 19820 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2025-10-20 17:17:01.668  INFO 1420 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 on DESKTOP-BA7RU8G with PID 1420 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20 17:17:01.671  INFO 1420 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20 17:17:02.268  INFO 1420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20 17:17:02.270  INFO 1420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20 17:17:02.289  INFO 1420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-10-20 17:17:02.813  INFO 1420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20 17:17:02.819  INFO 1420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20 17:17:02.819  INFO 1420 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-20 17:17:02.909  INFO 1420 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20 17:17:02.911  INFO 1420 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1210 ms
+2025-10-20 17:17:02.953  INFO 1420 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2025-10-20 17:17:03.187  INFO 1420 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20 17:17:03.509  INFO 1420 --- [main] org.redisson.Version                     : Redisson 3.23.5
+2025-10-20 17:17:03.797  INFO 1420 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:17:03.866  INFO 1420 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20 17:17:04.524  INFO 1420 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20 17:17:04.552  INFO 1420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20 17:17:04.561  INFO 1420 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 3.219 seconds (JVM running for 3.478)
+2025-10-20 17:17:04.565  INFO 1420 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20 17:17:04.666  INFO 1420 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-10-20 17:17:04.679 ERROR 1420 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NoClassDefFoundError: org/springframework/data/redis/connection/zset/Tuple
+	at org.redisson.spring.data.connection.RedissonConnection.<clinit>(RedissonConnection.java:2361) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.getConnection(RedissonConnectionFactory.java:113) ~[redisson-spring-data-31-3.23.5.jar:3.23.5]
+	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:193) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:211) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:191) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:97) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at org.springframework.data.redis.core.DefaultValueOperations.set(DefaultValueOperations.java:305) ~[spring-data-redis-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.util.RedisUtil.set(RedisUtil.java:96) ~[classes/:na]
+	at io.github.turmony.seckillsystem.config.SeckillGoodsInitializer.run(SeckillGoodsInitializer.java:50) ~[classes/:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:765) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.lambda$callRunners$2(SpringApplication.java:749) ~[spring-boot-2.7.18.jar:2.7.18]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[na:na]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:744) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300) ~[spring-boot-2.7.18.jar:2.7.18]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1289) ~[spring-boot-2.7.18.jar:2.7.18]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: java.lang.ClassNotFoundException: org.springframework.data.redis.connection.zset.Tuple
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525) ~[na:na]
+	... 26 common frames omitted
+
+2025-10-20 17:17:04.732  INFO 1420 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-10-20 17:17:04.738  INFO 1420 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2025-10-20T17:26:49.727+08:00  INFO 3748 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 3748 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20T17:26:49.729+08:00  INFO 3748 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20T17:26:50.346+08:00  INFO 3748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20T17:26:50.348+08:00  INFO 3748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20T17:26:50.366+08:00  INFO 3748 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-20T17:26:50.963+08:00  INFO 3748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20T17:26:50.973+08:00  INFO 3748 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20T17:26:50.974+08:00  INFO 3748 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-20T17:26:51.049+08:00  INFO 3748 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20T17:26:51.049+08:00  INFO 3748 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1291 ms
+2025-10-20T17:26:51.565+08:00  INFO 3748 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-20T17:26:51.879+08:00  INFO 3748 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:26:51.947+08:00  INFO 3748 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:26:52.648+08:00  INFO 3748 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20T17:26:52.687+08:00  INFO 3748 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20T17:26:52.698+08:00  INFO 3748 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 3.281 seconds (process running for 3.638)
+2025-10-20T17:26:52.724+08:00  INFO 3748 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20T17:26:52.789+08:00  INFO 3748 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20T17:26:52.967+08:00  INFO 3748 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 商品ID: 1, 商品名称: 1, 库存: 100
+2025-10-20T17:26:52.969+08:00  INFO 3748 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 商品ID: 2, 商品名称: 2, 库存: 100
+2025-10-20T17:26:52.970+08:00  INFO 3748 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 秒杀商品预加载完成，共加载 2 个商品 ==========
+2025-10-20T17:35:08.099+08:00  INFO 15304 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 15304 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20T17:35:08.101+08:00  INFO 15304 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20T17:35:08.668+08:00  INFO 15304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20T17:35:08.670+08:00  INFO 15304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20T17:35:08.685+08:00  INFO 15304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-20T17:35:09.179+08:00  INFO 15304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20T17:35:09.185+08:00  INFO 15304 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20T17:35:09.185+08:00  INFO 15304 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-20T17:35:09.251+08:00  INFO 15304 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20T17:35:09.252+08:00  INFO 15304 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1122 ms
+2025-10-20T17:35:09.594+08:00  INFO 15304 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-20T17:35:09.830+08:00  INFO 15304 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:35:09.900+08:00  INFO 15304 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:35:10.558+08:00  INFO 15304 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20T17:35:10.623+08:00  INFO 15304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20T17:35:10.632+08:00  INFO 15304 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.825 seconds (process running for 3.053)
+2025-10-20T17:35:10.656+08:00  INFO 15304 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20T17:35:10.717+08:00  INFO 15304 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20T17:35:10.877+08:00  INFO 15304 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 商品ID: 1, 商品名称: 1, 库存: 100
+2025-10-20T17:35:10.879+08:00  INFO 15304 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 商品ID: 2, 商品名称: 2, 库存: 100
+2025-10-20T17:35:10.880+08:00  INFO 15304 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 秒杀商品预加载完成，共加载 2 个商品 ==========
+2025-10-20T17:48:54.577+08:00  INFO 4632 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 4632 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20T17:48:54.578+08:00  INFO 4632 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20T17:48:55.373+08:00  INFO 4632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20T17:48:55.375+08:00  INFO 4632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20T17:48:55.401+08:00  INFO 4632 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2025-10-20T17:48:55.919+08:00  INFO 4632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20T17:48:55.925+08:00  INFO 4632 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20T17:48:55.926+08:00  INFO 4632 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-20T17:48:55.998+08:00  INFO 4632 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20T17:48:55.999+08:00  INFO 4632 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1390 ms
+2025-10-20T17:48:56.342+08:00  INFO 4632 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-20T17:48:56.568+08:00  INFO 4632 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:48:56.636+08:00  INFO 4632 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T17:48:57.267+08:00  INFO 4632 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20T17:48:57.302+08:00  INFO 4632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20T17:48:57.311+08:00  INFO 4632 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 3.072 seconds (process running for 3.331)
+2025-10-20T17:48:57.335+08:00  INFO 4632 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20T17:48:57.393+08:00  INFO 4632 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20T17:48:57.553+08:00  INFO 4632 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 秒杀商品序号: 1, 商品ID: 1, 库存: 100
+2025-10-20T17:48:57.555+08:00  INFO 4632 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 秒杀商品序号: 2, 商品ID: 2, 库存: 100
+2025-10-20T17:48:57.555+08:00  INFO 4632 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 秒杀商品预加载完成，共加载 2 个商品 ==========
+2025-10-20T18:10:00.307+08:00  INFO 21044 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 21044 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-20T18:10:00.308+08:00  INFO 21044 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-20T18:10:00.871+08:00  INFO 21044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-20T18:10:00.873+08:00  INFO 21044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-20T18:10:00.888+08:00  INFO 21044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-20T18:10:01.351+08:00  INFO 21044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-20T18:10:01.358+08:00  INFO 21044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-20T18:10:01.358+08:00  INFO 21044 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-20T18:10:01.426+08:00  INFO 21044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-20T18:10:01.427+08:00  INFO 21044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1091 ms
+2025-10-20T18:10:01.773+08:00  INFO 21044 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-20T18:10:02.014+08:00  INFO 21044 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T18:10:02.078+08:00  INFO 21044 --- [redisson-netty-2-20] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for localhost/127.0.0.1:6379
+2025-10-20T18:10:02.714+08:00  INFO 21044 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-20T18:10:02.758+08:00  INFO 21044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-20T18:10:02.766+08:00  INFO 21044 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.747 seconds (process running for 2.978)
+2025-10-20T18:10:02.789+08:00  INFO 21044 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 开始预加载秒杀商品到Redis ==========
+2025-10-20T18:10:02.845+08:00  INFO 21044 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-20T18:10:03.003+08:00  INFO 21044 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 秒杀商品序号: 1, 商品ID: 1, 商品名称: iPhone 15 Pro, 库存: 100
+2025-10-20T18:10:03.005+08:00  INFO 21044 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预加载秒杀商品成功 -> 秒杀商品序号: 2, 商品ID: 2, 商品名称: MacBook Pro, 库存: 100
+2025-10-20T18:10:03.005+08:00  INFO 21044 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : ========== 秒杀商品预加载完成，共加载 2 个商品 ==========
