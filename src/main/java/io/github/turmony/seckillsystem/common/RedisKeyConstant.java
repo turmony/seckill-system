@@ -1,6 +1,5 @@
 package io.github.turmony.seckillsystem.common;
 
-
 /**
  * Redis Key常量类
  * 统一管理Redis中使用的Key
@@ -18,6 +17,12 @@ public class RedisKeyConstant {
      * 完整格式: seckill:stock:{goodsId}
      */
     public static final String SECKILL_STOCK_PREFIX = "seckill:stock:";
+
+    /**
+     * 秒杀商品列表Key
+     * 用于缓存所有秒杀商品ID列表
+     */
+    public static final String SECKILL_GOODS_LIST = "seckill:goods:list";
 
     /**
      * 获取秒杀商品缓存Key
