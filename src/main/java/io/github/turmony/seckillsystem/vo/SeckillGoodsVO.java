@@ -1,6 +1,5 @@
 package io.github.turmony.seckillsystem.vo;
 
-
 import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -71,7 +70,17 @@ public class SeckillGoodsVO implements Serializable {
     private LocalDateTime endTime;
 
     /**
-     * 状态：0-未开始 1-进行中 2-已结束
+     * 秒杀状态：0-未开始 1-进行中 2-已结束
      */
     private Integer status;
+
+    /**
+     * 距离开始剩余秒数（未开始时有值）
+     */
+    private Long remainSeconds;
+
+    /**
+     * 距离结束剩余秒数（进行中时有值）
+     */
+    private Long endRemainSeconds;
 }

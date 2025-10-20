@@ -1,6 +1,5 @@
 package io.github.turmony.seckillsystem.service.Impl;
 
-
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -17,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,6 @@ public class SeckillGoodsServiceImpl implements SeckillGoodsService {
         Page<SeckillGoods> page = new Page<>(current, size);
         Page<SeckillGoods> seckillGoodsPage = seckillGoodsMapper.selectPage(page,
                 new QueryWrapper<SeckillGoods>()
-                        .eq("status", 1)  // 只查询进行中的秒杀
                         .orderByDesc("create_time"));
 
         // 转换为VO，并从Redis获取库存信息
@@ -160,7 +160,7 @@ public class SeckillGoodsServiceImpl implements SeckillGoodsService {
 
     /**
      * 将SeckillGoods转换为SeckillGoodsVO
-     * 包含关联的商品基本信息
+     * 包含关联的商品基本信息和秒杀状态计算
      */
     private SeckillGoodsVO convertToVO(SeckillGoods seckillGoods) {
         SeckillGoodsVO vo = new SeckillGoodsVO();
@@ -176,6 +176,42 @@ public class SeckillGoodsServiceImpl implements SeckillGoodsService {
             vo.setGoodsPrice(goods.getPrice());
         }
 
+        // 计算秒杀状态和倒计时
+        calculateSeckillStatus(vo);
+
         return vo;
+    }
+
+    /**
+     * 计算秒杀状态和倒计时
+     * @param vo 秒杀商品VO
+     */
+    private void calculateSeckillStatus(SeckillGoodsVO vo) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime startTime = vo.getStartTime();
+        LocalDateTime endTime = vo.getEndTime();
+
+        if (now.isBefore(startTime)) {
+            // 未开始
+            vo.setStatus(0);
+            // 计算距离开始的剩余秒数
+            long remainSeconds = startTime.atZone(ZoneId.systemDefault()).toEpochSecond()
+                    - now.atZone(ZoneId.systemDefault()).toEpochSecond();
+            vo.setRemainSeconds(remainSeconds);
+            vo.setEndRemainSeconds(null);
+        } else if (now.isAfter(endTime)) {
+            // 已结束
+            vo.setStatus(2);
+            vo.setRemainSeconds(null);
+            vo.setEndRemainSeconds(null);
+        } else {
+            // 进行中
+            vo.setStatus(1);
+            vo.setRemainSeconds(null);
+            // 计算距离结束的剩余秒数
+            long endRemainSeconds = endTime.atZone(ZoneId.systemDefault()).toEpochSecond()
+                    - now.atZone(ZoneId.systemDefault()).toEpochSecond();
+            vo.setEndRemainSeconds(endRemainSeconds);
+        }
     }
 }
