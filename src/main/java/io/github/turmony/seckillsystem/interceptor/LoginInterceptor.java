@@ -17,6 +17,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        // ⭐ 添加这段日志
+        String requestURI = request.getRequestURI();
+        System.out.println("========================================");
+        System.out.println("🔍 拦截器执行");
+        System.out.println("📍 请求路径: " + requestURI);
+        System.out.println("📍 请求方法: " + request.getMethod());
+        System.out.println("========================================");
+
         // 1. 从请求头获取Token
         String token = request.getHeader("Authorization");
 

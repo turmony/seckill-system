@@ -136,6 +136,15 @@ public class RedisUtil {
 
     /**
      * 递减
+     * @param key 键
+     * @return 递减后的值
+     */
+    public Long decr(String key) {
+        return redisTemplate.opsForValue().decrement(key);
+    }
+
+    /**
+     * 递减
      * @param key   键
      * @param delta 要减少几(小于0)
      */
