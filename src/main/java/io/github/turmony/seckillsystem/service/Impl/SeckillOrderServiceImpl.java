@@ -11,6 +11,7 @@ import io.github.turmony.seckillsystem.mapper.GoodsMapper;
 import io.github.turmony.seckillsystem.mapper.SeckillGoodsMapper;
 import io.github.turmony.seckillsystem.mapper.SeckillOrderMapper;
 import io.github.turmony.seckillsystem.service.SeckillOrderService;
+import io.github.turmony.seckillsystem.util.LuaScriptUtil;
 import io.github.turmony.seckillsystem.util.RedisUtil;
 import io.github.turmony.seckillsystem.vo.SeckillOrderVO;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
     private final SeckillGoodsMapper seckillGoodsMapper;
     private final GoodsMapper goodsMapper;
     private final RedisUtil redisUtil;
+    private final LuaScriptUtil luaScriptUtil;  // ← 新增这一行
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -77,16 +79,52 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
             throw new RuntimeException("您已经购买过该商品了");
         }
 
-        // 4. 检查库存（从Redis读取，提高性能）
-        String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
-        Long stock = redisUtil.getLong(stockKey);
+//        // 4. 检查库存（从Redis读取，提高性能）
+//        String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
+//        Long stock = redisUtil.getLong(stockKey);
+//
+//        if (stock == null || stock <= 0) {
+//            log.warn("库存不足，商品ID: {}, Redis库存: {}", goodsId, stock);
+//            throw new RuntimeException("商品已售罄");
+//        }
+//
+//        // 5. 扣减MySQL库存（乐观锁，防止超卖）
+//        int updateCount = seckillGoodsMapper.update(null,
+//                new UpdateWrapper<SeckillGoods>()
+//                        .setSql("stock_count = stock_count - 1")
+//                        .eq("goods_id", goodsId)
+//                        .gt("stock_count", 0)  // 库存必须大于0
+//        );
+//
+//        if (updateCount == 0) {
+//            log.warn("库存扣减失败（数据库库存不足），商品ID: {}", goodsId);
+//            throw new RuntimeException("商品已售罄");
+//        }
+//
+//        log.info("数据库库存扣减成功，商品ID: {}", goodsId);
+//
+//        // 6. 同步扣减Redis库存
+//        redisUtil.decr(stockKey);
+//        log.info("Redis库存扣减成功，商品ID: {}, 剩余库存: {}", goodsId, redisUtil.getLong(stockKey));
 
-        if (stock == null || stock <= 0) {
-            log.warn("库存不足，商品ID: {}, Redis库存: {}", goodsId, stock);
+        // 4. 使用Lua脚本原子扣减Redis库存（防止超卖的关键！）
+        String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
+        Long luaResult = luaScriptUtil.deductStock(stockKey);
+
+        if (LuaScriptUtil.isKeyNotExist(luaResult)) {
+            log.error("Redis库存Key不存在，商品ID: {}, 请检查缓存预热是否正常", goodsId);
+            throw new RuntimeException("系统异常，请稍后重试");
+        }
+
+        if (LuaScriptUtil.isStockInsufficient(luaResult)) {
+            log.warn("Redis库存不足，商品ID: {}", goodsId);
             throw new RuntimeException("商品已售罄");
         }
 
-        // 5. 扣减MySQL库存（乐观锁，防止超卖）
+        log.info("Lua脚本扣减Redis库存成功，商品ID: {}, 剩余库存: {}",
+                goodsId, redisUtil.getLong(stockKey));
+
+// 5. 扣减MySQL库存（双重保险，保证最终一致性）
         int updateCount = seckillGoodsMapper.update(null,
                 new UpdateWrapper<SeckillGoods>()
                         .setSql("stock_count = stock_count - 1")
@@ -95,15 +133,14 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         );
 
         if (updateCount == 0) {
-            log.warn("库存扣减失败（数据库库存不足），商品ID: {}", goodsId);
+            // MySQL库存不足，需要回滚Redis库存
+            redisUtil.incr(stockKey, 1);
+            log.warn("数据库库存不足，已回滚Redis库存，商品ID: {}", goodsId);
             throw new RuntimeException("商品已售罄");
         }
 
-        log.info("数据库库存扣减成功，商品ID: {}", goodsId);
+        log.info("MySQL库存扣减成功，商品ID: {}", goodsId);
 
-        // 6. 同步扣减Redis库存
-        redisUtil.decr(stockKey);
-        log.info("Redis库存扣减成功，商品ID: {}, 剩余库存: {}", goodsId, redisUtil.getLong(stockKey));
 
         // 7. 查询商品基本信息（用于冗余字段）
         Goods goods = goodsMapper.selectById(goodsId);
