@@ -1,6 +1,7 @@
 package io.github.turmony.seckillsystem.config;
 
 import io.github.turmony.seckillsystem.interceptor.LoginInterceptor;
+import io.github.turmony.seckillsystem.interceptor.SignInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,6 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
 
+    @Autowired
+    private SignInterceptor signInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
@@ -22,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
         System.out.println("⚙️ WebConfig 正在配置拦截器");
         System.out.println("========================================");
 
+        // 注册登录拦截器
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")                  // 拦截所有路径
                 .excludePathPatterns(
@@ -50,5 +55,22 @@ public class WebConfig implements WebMvcConfigurer {
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
                 );
+
+        // 注册签名验证拦截器
+        registry.addInterceptor(signInterceptor)
+                .addPathPatterns("/**")                  // 拦截所有路径
+                .excludePathPatterns(
+                        "/error",
+                        "/swagger-ui/**",
+                        "/swagger-resources/**",
+                        "/v3/api-docs/**",
+                        // 签名相关接口不需要验证签名（用于生成签名和测试）
+                        "/api/sign/**",
+                        "/api/test/noSign"
+                );
+
+        System.out.println("✅ 登录拦截器已注册");
+        System.out.println("✅ 签名验证拦截器已注册");
+        System.out.println("========================================");
     }
 }

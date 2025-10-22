@@ -5882,3 +5882,88 @@ org.redisson.client.RedisTimeoutException: Command execution timeout for command
 2025-10-22T21:46:10.559+08:00  INFO 19796 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : === 【MQ消费者】订单处理完成 === 订单ID: f2a38446b8054042aaa56417d358440c
 2025-10-22T21:46:10.565+08:00  INFO 19796 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] i.g.t.s.service.mq.MQReceiver            : ✅ 秒杀订单处理成功: orderId=f2a38446b8054042aaa56417d358440c, 耗时: 33ms
 2025-10-22T21:46:10.566+08:00  INFO 19796 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] i.g.t.s.service.mq.MQReceiver            : 📮 消息已确认: orderId=f2a38446b8054042aaa56417d358440c
+2025-10-22T22:11:31.480+08:00  INFO 20508 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 20508 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T22:11:31.482+08:00  INFO 20508 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T22:11:32.047+08:00  INFO 20508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T22:11:32.048+08:00  INFO 20508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T22:11:32.064+08:00  INFO 20508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-22T22:11:32.620+08:00  INFO 20508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T22:11:32.627+08:00  INFO 20508 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T22:11:32.627+08:00  INFO 20508 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T22:11:32.694+08:00  INFO 20508 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T22:11:32.694+08:00  INFO 20508 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1184 ms
+2025-10-22T22:11:33.054+08:00  INFO 20508 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T22:11:33.292+08:00  INFO 20508 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T22:11:33.322+08:00  INFO 20508 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T22:11:33.510+08:00  INFO 20508 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T22:11:34.079+08:00  INFO 20508 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T22:11:34.132+08:00  INFO 20508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T22:11:34.134+08:00  INFO 20508 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-10-22T22:11:34.208+08:00  INFO 20508 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5ff29e8b:0/SimpleConnection@7dd847a2 [delegate=amqp://admin@0:0:0:0:0:0:0:1:5672/, localPort=52640]
+2025-10-22T22:11:34.259+08:00  INFO 20508 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 3.084 seconds (process running for 3.35)
+2025-10-22T22:11:34.291+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T22:11:34.351+08:00  INFO 20508 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T22:11:34.462+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T22:11:34.503+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 97
+2025-10-22T22:11:34.506+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 97
+2025-10-22T22:11:34.508+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 4
+2025-10-22T22:11:34.508+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T22:11:34.508+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T22:11:34.508+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T22:11:34.520+08:00  INFO 20508 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T22:11:41.532+08:00  INFO 20508 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T22:11:41.533+08:00  INFO 20508 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T22:11:41.534+08:00  INFO 20508 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T22:11:54.310+08:00  INFO 20508 --- [http-nio-8080-exec-3] i.g.t.s.c.SecKillTokenController         : 生成秒杀令牌请求, userId:70, goodsId:3
+2025-10-22T22:11:54.324+08:00  INFO 20508 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SecKillTokenServiceImpl   : 生成秒杀令牌成功, userId:70, goodsId:3, token:9c663415d6ca42ca9a7db493fe206284
+2025-10-22T22:12:19.315+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.c.SeckillOrderController         : 【异步秒杀】用户下单请求,用户ID: 70, 商品ID: 3
+2025-10-22T22:12:19.318+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : === 【异步秒杀】开始 === 用户ID: 70, 商品ID: 3
+2025-10-22T22:12:19.354+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T22:12:19.355+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : ✅ Lua脚本扣减Redis库存成功，商品ID: 3
+2025-10-22T22:12:19.365+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : ✅ 订单创建成功（排队中状态），订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998, 订单号: 20251022221219319746
+2025-10-22T22:12:19.365+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.seckillsystem.service.mq.MQSender  : 发送秒杀消息到MQ: userId=70, goodsId=3, orderId=696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.372+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.seckillsystem.service.mq.MQSender  : 秒杀消息发送成功: orderId=696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.372+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : ✅ 秒杀消息已发送到MQ，订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.372+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : === 【异步秒杀】完成 === 订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998，请稍后查询订单结果
+2025-10-22T22:12:19.387+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.service.mq.MQReceiver            : 📨 接收到秒杀消息: userId=70, goodsId=3, orderId=696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.387+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.service.mq.MQReceiver            : ✅ 消息完整性验证通过
+2025-10-22T22:12:19.389+08:00  INFO 20508 --- [http-nio-8080-exec-4] i.g.t.s.c.SeckillOrderController         : 【异步秒杀】订单已创建(排队中),订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.390+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : === 【MQ消费者】开始处理订单 === 订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998, 用户ID: 70, 商品ID: 3
+2025-10-22T22:12:19.418+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : ✅ MySQL库存扣减成功，商品ID: 3
+2025-10-22T22:12:19.422+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : ✅ 订单处理成功，订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998, 订单号: 20251022221219319746
+2025-10-22T22:12:19.432+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : === 【MQ消费者】订单处理完成 === 订单ID: 696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:12:19.438+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.service.mq.MQReceiver            : ✅ 秒杀订单处理成功: orderId=696e5ea3fb6f42cf95f8ba63e2a6a998, 耗时: 51ms
+2025-10-22T22:12:19.439+08:00  INFO 20508 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] i.g.t.s.service.mq.MQReceiver            : 📮 消息已确认: orderId=696e5ea3fb6f42cf95f8ba63e2a6a998
+2025-10-22T22:20:13.365+08:00  INFO 8264 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 8264 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T22:20:13.367+08:00  INFO 8264 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T22:20:13.912+08:00  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T22:20:13.914+08:00  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T22:20:13.930+08:00  INFO 8264 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-22T22:20:14.474+08:00  INFO 8264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T22:20:14.480+08:00  INFO 8264 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T22:20:14.481+08:00  INFO 8264 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T22:20:14.544+08:00  INFO 8264 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T22:20:14.544+08:00  INFO 8264 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1153 ms
+2025-10-22T22:20:14.903+08:00  INFO 8264 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T22:20:15.153+08:00  INFO 8264 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T22:20:15.181+08:00  INFO 8264 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T22:20:15.379+08:00  INFO 8264 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T22:20:15.991+08:00  INFO 8264 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T22:20:16.041+08:00  INFO 8264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T22:20:16.044+08:00  INFO 8264 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-10-22T22:20:16.115+08:00  INFO 8264 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#68b3979d:0/SimpleConnection@16279a5d [delegate=amqp://admin@0:0:0:0:0:0:0:1:5672/, localPort=49862]
+2025-10-22T22:20:16.160+08:00  INFO 8264 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 3.066 seconds (process running for 3.287)
+2025-10-22T22:20:16.190+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T22:20:16.250+08:00  INFO 8264 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T22:20:16.350+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T22:20:16.386+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 97
+2025-10-22T22:20:16.388+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 97
+2025-10-22T22:20:16.389+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 3
+2025-10-22T22:20:16.390+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T22:20:16.390+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T22:20:16.390+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T22:20:16.400+08:00  INFO 8264 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T22:20:23.557+08:00  INFO 8264 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T22:20:23.558+08:00  INFO 8264 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T22:20:23.559+08:00  INFO 8264 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T22:22:18.989+08:00  INFO 8264 --- [http-nio-8080-exec-6] i.g.t.s.controller.SignTestController    : 无需签名的测试接口被调用: message=null
