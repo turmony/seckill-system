@@ -4909,3 +4909,383 @@ java.lang.IllegalArgumentException: The HTTP header line [content-type : applica
 2025-10-21T21:03:16.129+08:00  INFO 12248 --- [http-nio-8080-exec-37] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251021210316643455, 订单ID: 8fcef32cef1e40e299fea3a1d7dbdf4d, 用户ID: 73, 商品ID: 3, 秒杀商品ID: 3
 2025-10-21T21:03:16.138+08:00  INFO 12248 --- [http-nio-8080-exec-41] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
 2025-10-21T21:03:16.140+08:00  INFO 12248 --- [http-nio-8080-exec-41] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251021210316973189, 订单ID: b93dbb31663a4926b6ad50f3ce4fa78e, 用户ID: 74, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:14:50.722+08:00  INFO 9948 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 9948 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T13:14:50.722+08:00  INFO 9948 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T13:14:51.378+08:00  INFO 9948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T13:14:51.380+08:00  INFO 9948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T13:14:51.400+08:00  INFO 9948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-22T13:14:51.949+08:00  INFO 9948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T13:14:51.965+08:00  INFO 9948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T13:14:51.965+08:00  INFO 9948 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T13:14:52.123+08:00  INFO 9948 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T13:14:52.123+08:00  INFO 9948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1374 ms
+2025-10-22T13:14:52.504+08:00  INFO 9948 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T13:14:57.312+08:00  WARN 9948 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'seckillGoodsInitializer' defined in file [D:\IDEAProject\seckill-system\target\classes\io\github\turmony\seckillsystem\config\SeckillGoodsInitializer.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate': Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+2025-10-22T13:14:57.312+08:00  INFO 9948 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2025-10-22T13:14:57.312+08:00  INFO 9948 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-10-22T13:14:57.359+08:00  INFO 9948 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-22T13:14:57.384+08:00 ERROR 9948 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'seckillGoodsInitializer' defined in file [D:\IDEAProject\seckill-system\target\classes\io\github\turmony\seckillsystem\config\SeckillGoodsInitializer.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate': Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915) ~[spring-context-6.0.3.jar:6.0.3]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584) ~[spring-context-6.0.3.jar:6.0.3]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.0.1.jar:3.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) ~[spring-boot-3.0.1.jar:3.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432) ~[spring-boot-3.0.1.jar:3.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) ~[spring-boot-3.0.1.jar:3.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302) ~[spring-boot-3.0.1.jar:3.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291) ~[spring-boot-3.0.1.jar:3.0.1]
+	at io.github.turmony.seckillsystem.SeckillApplication.main(SeckillApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisUtil': Unsatisfied dependency expressed through field 'redisTemplate': Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:712) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:692) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:127) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:481) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1397) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789) ~[spring-beans-6.0.3.jar:6.0.3]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redisTemplate' defined in class path resource [io/github/turmony/seckillsystem/config/RedisConfig.class]: Unsatisfied dependency expressed through method 'redisTemplate' parameter 0: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:548) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:709) ~[spring-beans-6.0.3.jar:6.0.3]
+	... 34 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'redissonConnectionFactory' defined in class path resource [org/redisson/spring/starter/RedissonAutoConfigurationV2.class]: Unsatisfied dependency expressed through method 'redissonConnectionFactory' parameter 0: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:548) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789) ~[spring-beans-6.0.3.jar:6.0.3]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redissonClient' defined in class path resource [io/github/turmony/seckillsystem/config/RedissonConfig.class]: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:491) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789) ~[spring-beans-6.0.3.jar:6.0.3]
+	... 61 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.redisson.api.RedissonClient]: Factory method 'redissonClient' threw exception with message: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.0.3.jar:6.0.3]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.0.3.jar:6.0.3]
+	... 75 common frames omitted
+Caused by: org.redisson.client.RedisConnectionException: Unable to connect to Redis server: localhost/127.0.0.1:6379
+	at org.redisson.connection.pool.ConnectionPool.lambda$createConnection$0(ConnectionPool.java:129) ~[redisson-3.24.1.jar:3.24.1]
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2162) ~[na:na]
+	at org.redisson.connection.pool.ConnectionPool.promiseFailure(ConnectionPool.java:281) ~[redisson-3.24.1.jar:3.24.1]
+	at org.redisson.connection.pool.ConnectionPool.lambda$createConnection$6(ConnectionPool.java:245) ~[redisson-3.24.1.jar:3.24.1]
+	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(CompletableFuture.java:863) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(CompletableFuture.java:841) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2162) ~[na:na]
+	at org.redisson.client.RedisClient$1$2.run(RedisClient.java:310) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:174) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:167) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:470) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.util.concurrent.CompletionException: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:6379
+	at java.base/java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:368) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture.completeRelay(CompletableFuture.java:377) ~[na:na]
+	at java.base/java.util.concurrent.CompletableFuture$UniRelay.tryFire(CompletableFuture.java:1097) ~[na:na]
+	... 11 common frames omitted
+Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: no further information: localhost/127.0.0.1:6379
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:776) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T13:16:02.991+08:00  INFO 29404 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 29404 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T13:16:02.992+08:00  INFO 29404 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T13:16:03.516+08:00  INFO 29404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T13:16:03.518+08:00  INFO 29404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T13:16:03.535+08:00  INFO 29404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-22T13:16:03.973+08:00  INFO 29404 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T13:16:03.979+08:00  INFO 29404 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T13:16:03.979+08:00  INFO 29404 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T13:16:04.036+08:00  INFO 29404 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T13:16:04.037+08:00  INFO 29404 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1018 ms
+2025-10-22T13:16:04.360+08:00  INFO 29404 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T13:16:04.582+08:00  INFO 29404 --- [redisson-netty-2-6] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T13:16:04.609+08:00  INFO 29404 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T13:16:04.824+08:00  INFO 29404 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T13:16:05.383+08:00  INFO 29404 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T13:16:05.417+08:00  INFO 29404 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T13:16:05.426+08:00  INFO 29404 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.702 seconds (process running for 2.927)
+2025-10-22T13:16:05.448+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T13:16:05.513+08:00  INFO 29404 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T13:16:05.631+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T13:16:05.674+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T13:16:05.676+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T13:16:05.677+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 0
+2025-10-22T13:16:05.677+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T13:16:05.677+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T13:16:05.678+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T13:16:05.688+08:00  INFO 29404 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T13:22:47.434+08:00  INFO 9912 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 9912 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T13:22:47.436+08:00  INFO 9912 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T13:22:47.971+08:00  INFO 9912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T13:22:47.973+08:00  INFO 9912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T13:22:47.987+08:00  INFO 9912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2025-10-22T13:22:48.428+08:00  INFO 9912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T13:22:48.435+08:00  INFO 9912 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T13:22:48.436+08:00  INFO 9912 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T13:22:48.503+08:00  INFO 9912 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T13:22:48.504+08:00  INFO 9912 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1040 ms
+2025-10-22T13:22:48.829+08:00  INFO 9912 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T13:22:49.055+08:00  INFO 9912 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T13:22:49.087+08:00  INFO 9912 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T13:22:49.251+08:00  INFO 9912 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T13:22:49.717+08:00  INFO 9912 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T13:22:49.749+08:00  INFO 9912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T13:22:49.758+08:00  INFO 9912 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.594 seconds (process running for 2.807)
+2025-10-22T13:22:49.780+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T13:22:49.833+08:00  INFO 9912 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T13:22:49.935+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T13:22:49.987+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T13:22:49.989+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T13:22:49.991+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 10
+2025-10-22T13:22:49.991+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T13:22:49.991+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T13:22:49.991+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T13:22:50.004+08:00  INFO 9912 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T13:23:51.111+08:00  INFO 9912 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T13:23:51.111+08:00  INFO 9912 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T13:23:51.113+08:00  INFO 9912 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T13:23:51.134+08:00  WARN 9912 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-10-22T13:24:17.594+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T13:24:17.598+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T13:24:17.664+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:24:17.665+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 9
+2025-10-22T13:24:17.670+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:24:17.679+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132417852374, 订单ID: 3451e51a74be4022a4bfc80f37c70189, 用户ID: 70, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:24:20.153+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T13:24:20.154+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T13:24:20.163+08:00  WARN 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 用户已购买过该商品，用户ID: 70, 商品ID: 3
+2025-10-22T13:24:20.167+08:00 ERROR 9912 --- [http-nio-8080-exec-5] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 70, 商品ID: 3, 错误: 您已经购买过该商品了
+2025-10-22T13:28:45.068+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 86, 商品ID: 3
+2025-10-22T13:28:45.069+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 86, 商品ID: 3
+2025-10-22T13:28:45.074+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 71, 商品ID: 3
+2025-10-22T13:28:45.075+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 71, 商品ID: 3
+2025-10-22T13:28:45.078+08:00  INFO 9912 --- [http-nio-8080-exec-8] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T13:28:45.078+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.079+08:00  INFO 9912 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T13:28:45.080+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 8
+2025-10-22T13:28:45.083+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.084+08:00  WARN 9912 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 用户已购买过该商品，用户ID: 70, 商品ID: 3
+2025-10-22T13:28:45.085+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.087+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 7
+2025-10-22T13:28:45.088+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845758361, 订单ID: a5d6387f39844f1aa97b7c770efb4454, 用户ID: 86, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.088+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 75, 商品ID: 3
+2025-10-22T13:28:45.090+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 72, 商品ID: 3
+2025-10-22T13:28:45.090+08:00 ERROR 9912 --- [http-nio-8080-exec-8] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 70, 商品ID: 3, 错误: 您已经购买过该商品了
+2025-10-22T13:28:45.090+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 87, 商品ID: 3
+2025-10-22T13:28:45.092+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 75, 商品ID: 3
+2025-10-22T13:28:45.093+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 72, 商品ID: 3
+2025-10-22T13:28:45.098+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 87, 商品ID: 3
+2025-10-22T13:28:45.101+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.101+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 88, 商品ID: 3
+2025-10-22T13:28:45.102+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 6
+2025-10-22T13:28:45.103+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 94, 商品ID: 3
+2025-10-22T13:28:45.104+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.106+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.107+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 4
+2025-10-22T13:28:45.107+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 88, 商品ID: 3
+2025-10-22T13:28:45.107+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.109+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845924968, 订单ID: 609f673940ed4005812e6319cb87acfa, 用户ID: 71, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.109+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 4
+2025-10-22T13:28:45.114+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.116+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 94, 商品ID: 3
+2025-10-22T13:28:45.117+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 74, 商品ID: 3
+2025-10-22T13:28:45.118+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 73, 商品ID: 3
+2025-10-22T13:28:45.128+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 3
+2025-10-22T13:28:45.145+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 73, 商品ID: 3
+2025-10-22T13:28:45.134+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 74, 商品ID: 3
+2025-10-22T13:28:45.136+08:00  INFO 9912 --- [http-nio-8080-exec-26] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 93, 商品ID: 3
+2025-10-22T13:28:45.138+08:00  INFO 9912 --- [http-nio-8080-exec-14] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 97, 商品ID: 3
+2025-10-22T13:28:45.147+08:00  INFO 9912 --- [http-nio-8080-exec-26] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 93, 商品ID: 3
+2025-10-22T13:28:45.125+08:00  INFO 9912 --- [http-nio-8080-exec-12] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 78, 商品ID: 3
+2025-10-22T13:28:45.119+08:00  INFO 9912 --- [http-nio-8080-exec-11] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 76, 商品ID: 3
+2025-10-22T13:28:45.139+08:00  INFO 9912 --- [http-nio-8080-exec-28] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 83, 商品ID: 3
+2025-10-22T13:28:45.140+08:00  INFO 9912 --- [http-nio-8080-exec-20] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 84, 商品ID: 3
+2025-10-22T13:28:45.141+08:00  INFO 9912 --- [http-nio-8080-exec-19] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 90, 商品ID: 3
+2025-10-22T13:28:45.154+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.141+08:00  INFO 9912 --- [http-nio-8080-exec-21] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 92, 商品ID: 3
+2025-10-22T13:28:45.141+08:00  INFO 9912 --- [http-nio-8080-exec-25] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 91, 商品ID: 3
+2025-10-22T13:28:45.142+08:00  INFO 9912 --- [http-nio-8080-exec-16] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 80, 商品ID: 3
+2025-10-22T13:28:45.142+08:00  INFO 9912 --- [http-nio-8080-exec-15] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 79, 商品ID: 3
+2025-10-22T13:28:45.142+08:00  INFO 9912 --- [http-nio-8080-exec-22] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 82, 商品ID: 3
+2025-10-22T13:28:45.143+08:00  INFO 9912 --- [http-nio-8080-exec-18] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 89, 商品ID: 3
+2025-10-22T13:28:45.143+08:00  INFO 9912 --- [http-nio-8080-exec-24] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 85, 商品ID: 3
+2025-10-22T13:28:45.143+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.148+08:00  INFO 9912 --- [http-nio-8080-exec-8] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 98, 商品ID: 3
+2025-10-22T13:28:45.156+08:00  INFO 9912 --- [http-nio-8080-exec-9] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 99, 商品ID: 3
+2025-10-22T13:28:45.156+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.156+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 2
+2025-10-22T13:28:45.143+08:00  INFO 9912 --- [http-nio-8080-exec-23] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 81, 商品ID: 3
+2025-10-22T13:28:45.156+08:00  INFO 9912 --- [http-nio-8080-exec-17] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 77, 商品ID: 3
+2025-10-22T13:28:45.161+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T13:28:45.161+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 0
+2025-10-22T13:28:45.159+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 95, 商品ID: 3
+2025-10-22T13:28:45.162+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 0
+2025-10-22T13:28:45.163+08:00  INFO 9912 --- [http-nio-8080-exec-26] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.164+08:00  WARN 9912 --- [http-nio-8080-exec-26] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.165+08:00  INFO 9912 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845332747, 订单ID: 5cdca06386db45bf9db1f3068834b490, 用户ID: 72, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.167+08:00 ERROR 9912 --- [http-nio-8080-exec-26] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 93, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.167+08:00  INFO 9912 --- [http-nio-8080-exec-15] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 79, 商品ID: 3
+2025-10-22T13:28:45.173+08:00  INFO 9912 --- [http-nio-8080-exec-15] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.174+08:00  WARN 9912 --- [http-nio-8080-exec-15] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.175+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.176+08:00  INFO 9912 --- [http-nio-8080-exec-11] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 76, 商品ID: 3
+2025-10-22T13:28:45.176+08:00 ERROR 9912 --- [http-nio-8080-exec-15] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 79, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.177+08:00  INFO 9912 --- [http-nio-8080-exec-19] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 90, 商品ID: 3
+2025-10-22T13:28:45.179+08:00  INFO 9912 --- [http-nio-8080-exec-27] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 96, 商品ID: 3
+2025-10-22T13:28:45.180+08:00  INFO 9912 --- [http-nio-8080-exec-4] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845040382, 订单ID: c37655e9cbdc436fb2c81775accde557, 用户ID: 87, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.182+08:00  INFO 9912 --- [http-nio-8080-exec-11] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.182+08:00  INFO 9912 --- [http-nio-8080-exec-19] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.182+08:00  WARN 9912 --- [http-nio-8080-exec-11] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.182+08:00  WARN 9912 --- [http-nio-8080-exec-19] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.185+08:00 ERROR 9912 --- [http-nio-8080-exec-11] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 76, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.185+08:00 ERROR 9912 --- [http-nio-8080-exec-19] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 90, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.185+08:00  INFO 9912 --- [http-nio-8080-exec-28] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 83, 商品ID: 3
+2025-10-22T13:28:45.185+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 95, 商品ID: 3
+2025-10-22T13:28:45.189+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.191+08:00  INFO 9912 --- [http-nio-8080-exec-20] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 84, 商品ID: 3
+2025-10-22T13:28:45.191+08:00  INFO 9912 --- [http-nio-8080-exec-10] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.191+08:00  WARN 9912 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.192+08:00  INFO 9912 --- [http-nio-8080-exec-28] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.192+08:00  WARN 9912 --- [http-nio-8080-exec-28] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.194+08:00 ERROR 9912 --- [http-nio-8080-exec-10] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 95, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.194+08:00  INFO 9912 --- [http-nio-8080-exec-27] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 96, 商品ID: 3
+2025-10-22T13:28:45.195+08:00 ERROR 9912 --- [http-nio-8080-exec-28] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 83, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.195+08:00  INFO 9912 --- [http-nio-8080-exec-25] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 91, 商品ID: 3
+2025-10-22T13:28:45.195+08:00  INFO 9912 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845732977, 订单ID: af06eb937a274a1794a345d53c19d59f, 用户ID: 75, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.198+08:00  INFO 9912 --- [http-nio-8080-exec-20] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.198+08:00  WARN 9912 --- [http-nio-8080-exec-20] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.201+08:00 ERROR 9912 --- [http-nio-8080-exec-20] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 84, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.201+08:00  INFO 9912 --- [http-nio-8080-exec-25] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.201+08:00  WARN 9912 --- [http-nio-8080-exec-25] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.202+08:00  INFO 9912 --- [http-nio-8080-exec-27] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.202+08:00  WARN 9912 --- [http-nio-8080-exec-27] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.202+08:00  INFO 9912 --- [http-nio-8080-exec-23] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 81, 商品ID: 3
+2025-10-22T13:28:45.204+08:00 ERROR 9912 --- [http-nio-8080-exec-25] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 91, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.204+08:00 ERROR 9912 --- [http-nio-8080-exec-27] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 96, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.205+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.205+08:00  INFO 9912 --- [http-nio-8080-exec-22] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 82, 商品ID: 3
+2025-10-22T13:28:45.206+08:00  INFO 9912 --- [http-nio-8080-exec-14] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 97, 商品ID: 3
+2025-10-22T13:28:45.207+08:00  INFO 9912 --- [http-nio-8080-exec-17] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 77, 商品ID: 3
+2025-10-22T13:28:45.208+08:00  INFO 9912 --- [http-nio-8080-exec-23] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.208+08:00  WARN 9912 --- [http-nio-8080-exec-23] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.210+08:00  INFO 9912 --- [http-nio-8080-exec-1] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845176689, 订单ID: 0223f7c5e20b4804bb8cfcf983a67f24, 用户ID: 88, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.212+08:00  INFO 9912 --- [http-nio-8080-exec-14] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.212+08:00  WARN 9912 --- [http-nio-8080-exec-14] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.212+08:00 ERROR 9912 --- [http-nio-8080-exec-23] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 81, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.212+08:00  INFO 9912 --- [http-nio-8080-exec-17] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.212+08:00  WARN 9912 --- [http-nio-8080-exec-17] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.213+08:00  INFO 9912 --- [http-nio-8080-exec-12] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 78, 商品ID: 3
+2025-10-22T13:28:45.214+08:00  INFO 9912 --- [http-nio-8080-exec-22] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.214+08:00  WARN 9912 --- [http-nio-8080-exec-22] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.215+08:00 ERROR 9912 --- [http-nio-8080-exec-14] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 97, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.215+08:00  INFO 9912 --- [http-nio-8080-exec-18] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 89, 商品ID: 3
+2025-10-22T13:28:45.217+08:00 ERROR 9912 --- [http-nio-8080-exec-22] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 82, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.217+08:00  INFO 9912 --- [http-nio-8080-exec-21] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 92, 商品ID: 3
+2025-10-22T13:28:45.217+08:00 ERROR 9912 --- [http-nio-8080-exec-17] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 77, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.217+08:00  INFO 9912 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 99, 商品ID: 3
+2025-10-22T13:28:45.221+08:00  INFO 9912 --- [http-nio-8080-exec-12] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.221+08:00  WARN 9912 --- [http-nio-8080-exec-12] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.223+08:00  INFO 9912 --- [http-nio-8080-exec-18] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.223+08:00  WARN 9912 --- [http-nio-8080-exec-18] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.224+08:00  INFO 9912 --- [http-nio-8080-exec-9] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.225+08:00  WARN 9912 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.226+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.226+08:00 ERROR 9912 --- [http-nio-8080-exec-12] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 78, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.227+08:00 ERROR 9912 --- [http-nio-8080-exec-18] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 89, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.227+08:00  INFO 9912 --- [http-nio-8080-exec-21] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.227+08:00  WARN 9912 --- [http-nio-8080-exec-21] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.228+08:00  INFO 9912 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 98, 商品ID: 3
+2025-10-22T13:28:45.228+08:00  INFO 9912 --- [http-nio-8080-exec-24] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 85, 商品ID: 3
+2025-10-22T13:28:45.228+08:00 ERROR 9912 --- [http-nio-8080-exec-9] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 99, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.228+08:00  INFO 9912 --- [http-nio-8080-exec-16] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 80, 商品ID: 3
+2025-10-22T13:28:45.232+08:00 ERROR 9912 --- [http-nio-8080-exec-21] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 92, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.233+08:00  INFO 9912 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845814124, 订单ID: d6257b00489148f2bd491774ba995d0d, 用户ID: 94, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.236+08:00  INFO 9912 --- [http-nio-8080-exec-8] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.236+08:00  INFO 9912 --- [http-nio-8080-exec-16] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.236+08:00  WARN 9912 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.236+08:00  WARN 9912 --- [http-nio-8080-exec-16] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.238+08:00  INFO 9912 --- [http-nio-8080-exec-24] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 0
+2025-10-22T13:28:45.238+08:00  WARN 9912 --- [http-nio-8080-exec-24] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Redis库存不足，商品ID: 3
+2025-10-22T13:28:45.239+08:00 ERROR 9912 --- [http-nio-8080-exec-16] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 80, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.239+08:00 ERROR 9912 --- [http-nio-8080-exec-8] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 98, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.241+08:00 ERROR 9912 --- [http-nio-8080-exec-24] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 85, 商品ID: 3, 错误: 商品已售罄
+2025-10-22T13:28:45.246+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.249+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845499238, 订单ID: 0201bb5cb1b048b58d55862875564cb0, 用户ID: 74, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T13:28:45.258+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T13:28:45.262+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845771044, 订单ID: 35a3a695fd1d4b738d2e60e95aea1c2a, 用户ID: 73, 商品ID: 3, 秒杀商品ID: 3

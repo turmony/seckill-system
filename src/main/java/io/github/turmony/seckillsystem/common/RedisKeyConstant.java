@@ -24,6 +24,27 @@ public class RedisKeyConstant {
      */
     public static final String SECKILL_GOODS_LIST = "seckill:goods:list";
 
+
+    // 在 RedisKeyConstant 类中添加以下常量和方法：
+
+    /**
+     * 秒杀订单分布式锁Key前缀
+     * 格式: seckill:lock:userId:goodsId
+     */
+    private static final String SECKILL_ORDER_LOCK = "seckill:lock:";
+
+    /**
+     * 获取秒杀订单分布式锁Key
+     * 锁的粒度：用户ID + 商品ID（防止同一用户对同一商品重复下单）
+     *
+     * @param userId  用户ID
+     * @param goodsId 商品ID
+     * @return 锁Key
+     */
+    public static String getSeckillOrderLockKey(Long userId, Long goodsId) {
+        return SECKILL_ORDER_LOCK + userId + ":" + goodsId;
+    }
+
     /**
      * 获取秒杀商品缓存Key
      * @param goodsId 商品ID

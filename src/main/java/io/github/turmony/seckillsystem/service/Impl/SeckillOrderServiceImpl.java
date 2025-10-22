@@ -13,6 +13,7 @@ import io.github.turmony.seckillsystem.mapper.SeckillOrderMapper;
 import io.github.turmony.seckillsystem.service.SeckillOrderService;
 import io.github.turmony.seckillsystem.util.LuaScriptUtil;
 import io.github.turmony.seckillsystem.util.RedisUtil;
+import io.github.turmony.seckillsystem.util.RedissonLockUtil;
 import io.github.turmony.seckillsystem.vo.SeckillOrderVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ import java.util.UUID;
 
 /**
  * 秒杀订单服务实现类
+ * 集成Redisson分布式锁，防止同一用户重复下单
  */
 @Slf4j
 @Service
@@ -37,7 +39,8 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
     private final SeckillGoodsMapper seckillGoodsMapper;
     private final GoodsMapper goodsMapper;
     private final RedisUtil redisUtil;
-    private final LuaScriptUtil luaScriptUtil;  // ← 新增这一行
+    private final LuaScriptUtil luaScriptUtil;
+    private final RedissonLockUtil redissonLockUtil;  // ✅ 注入分布式锁工具类
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -46,6 +49,19 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 
         log.info("开始秒杀下单，用户ID: {}, 商品ID: {}", userId, goodsId);
 
+        // ⭐ 使用分布式锁（锁的粒度：用户ID + 商品ID）
+        String lockKey = RedisKeyConstant.getSeckillOrderLockKey(userId, goodsId);
+
+        return redissonLockUtil.executeWithLock(lockKey, () -> {
+            // 在锁内执行秒杀逻辑，确保同一用户对同一商品不会重复下单
+            return doCreateOrder(userId, goodsId, orderDTO);
+        });
+    }
+
+    /**
+     * ⭐ 实际的订单创建逻辑（在分布式锁保护下执行）
+     */
+    private SeckillOrderVO doCreateOrder(Long userId, Long goodsId, SeckillOrderDTO orderDTO) {
         // 1. 查询秒杀商品信息（从数据库查询，确保数据准确）
         SeckillGoods seckillGoods = seckillGoodsMapper.selectOne(
                 new QueryWrapper<SeckillGoods>().eq("goods_id", goodsId)
@@ -68,6 +84,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         }
 
         // 3. 检查是否已经购买过（防止重复下单）
+        // ⭐ 虽然有分布式锁，但数据库也要检查（双重保险）
         SeckillOrder existOrder = seckillOrderMapper.selectOne(
                 new QueryWrapper<SeckillOrder>()
                         .eq("user_id", userId)
@@ -78,34 +95,6 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
             log.warn("用户已购买过该商品，用户ID: {}, 商品ID: {}", userId, goodsId);
             throw new RuntimeException("您已经购买过该商品了");
         }
-
-//        // 4. 检查库存（从Redis读取，提高性能）
-//        String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
-//        Long stock = redisUtil.getLong(stockKey);
-//
-//        if (stock == null || stock <= 0) {
-//            log.warn("库存不足，商品ID: {}, Redis库存: {}", goodsId, stock);
-//            throw new RuntimeException("商品已售罄");
-//        }
-//
-//        // 5. 扣减MySQL库存（乐观锁，防止超卖）
-//        int updateCount = seckillGoodsMapper.update(null,
-//                new UpdateWrapper<SeckillGoods>()
-//                        .setSql("stock_count = stock_count - 1")
-//                        .eq("goods_id", goodsId)
-//                        .gt("stock_count", 0)  // 库存必须大于0
-//        );
-//
-//        if (updateCount == 0) {
-//            log.warn("库存扣减失败（数据库库存不足），商品ID: {}", goodsId);
-//            throw new RuntimeException("商品已售罄");
-//        }
-//
-//        log.info("数据库库存扣减成功，商品ID: {}", goodsId);
-//
-//        // 6. 同步扣减Redis库存
-//        redisUtil.decr(stockKey);
-//        log.info("Redis库存扣减成功，商品ID: {}, 剩余库存: {}", goodsId, redisUtil.getLong(stockKey));
 
         // 4. 使用Lua脚本原子扣减Redis库存（防止超卖的关键！）
         String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
@@ -124,7 +113,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         log.info("Lua脚本扣减Redis库存成功，商品ID: {}, 剩余库存: {}",
                 goodsId, redisUtil.getLong(stockKey));
 
-// 5. 扣减MySQL库存（双重保险，保证最终一致性）
+        // 5. 扣减MySQL库存（双重保险，保证最终一致性）
         int updateCount = seckillGoodsMapper.update(null,
                 new UpdateWrapper<SeckillGoods>()
                         .setSql("stock_count = stock_count - 1")
@@ -141,38 +130,37 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 
         log.info("MySQL库存扣减成功，商品ID: {}", goodsId);
 
-
-        // 7. 查询商品基本信息（用于冗余字段）
+        // 6. 查询商品基本信息（用于冗余字段）
         Goods goods = goodsMapper.selectById(goodsId);
         if (goods == null) {
             log.error("商品不存在，商品ID: {}", goodsId);
             throw new RuntimeException("商品信息异常");
         }
 
-        // 8. 创建订单
+        // 7. 创建订单
         SeckillOrder order = new SeckillOrder();
         order.setUserId(userId);
         order.setGoodsId(goodsId);
 
-        // ⭐ 设置秒杀商品ID（这是之前缺失的关键字段）
+        // 设置秒杀商品ID
         order.setSeckillGoodsId(seckillGoods.getId());
 
         // 设置订单号
         order.setOrderNo(generateOrderNo());
 
-        // ⭐ 设置订单ID（支付系统用）
+        // 设置订单ID（支付系统用）
         order.setOrderId(generateOrderId());
 
-        // ⭐ 冗余字段：商品名称（防止商品被删除后无法显示）
+        // 冗余字段：商品名称（防止商品被删除后无法显示）
         order.setGoodsName(goods.getName());
 
-        // ⭐ 冗余字段：秒杀价格（记录当时的成交价格）
+        // 冗余字段：秒杀价格（记录当时的成交价格）
         order.setSeckillPrice(seckillGoods.getSeckillPrice());
 
         // 订单状态
         order.setStatus(0);  // 0-待支付
 
-        // ⭐ 秒杀状态（如果表中有这个字段）
+        // 秒杀状态（如果表中有这个字段）
         order.setSeckillStatus(0);  // 0-秒杀中
 
         // 创建时间
@@ -188,7 +176,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         log.info("订单创建成功，订单号: {}, 订单ID: {}, 用户ID: {}, 商品ID: {}, 秒杀商品ID: {}",
                 order.getOrderNo(), order.getOrderId(), userId, goodsId, seckillGoods.getId());
 
-        // 9. 转换为VO返回
+        // 8. 转换为VO返回
         return convertToVO(order, seckillGoods);
     }
 
@@ -223,7 +211,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
     }
 
     /**
-     * ⭐ 生成订单ID（用于支付系统）
+     * 生成订单ID（用于支付系统）
      * 使用UUID去掉横线，保证全局唯一
      */
     private String generateOrderId() {
