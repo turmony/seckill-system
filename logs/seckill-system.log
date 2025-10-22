@@ -5425,3 +5425,254 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 2025-10-22T16:26:31.955+08:00  INFO 9980 --- [http-nio-8080-exec-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-10-22T16:26:31.956+08:00  INFO 9980 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-10-22T16:26:31.957+08:00  INFO 9980 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T17:48:17.200+08:00  INFO 2472 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 2472 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T17:48:17.201+08:00  INFO 2472 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T17:48:17.749+08:00  INFO 2472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T17:48:17.750+08:00  INFO 2472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T17:48:17.766+08:00  INFO 2472 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-22T17:48:18.216+08:00  INFO 2472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T17:48:18.222+08:00  INFO 2472 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T17:48:18.223+08:00  INFO 2472 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T17:48:18.285+08:00  INFO 2472 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T17:48:18.286+08:00  INFO 2472 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1059 ms
+2025-10-22T17:48:18.624+08:00  INFO 2472 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T17:48:18.853+08:00  INFO 2472 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T17:48:18.884+08:00  INFO 2472 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T17:48:19.054+08:00  INFO 2472 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T17:48:19.524+08:00  INFO 2472 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T17:48:19.576+08:00  INFO 2472 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T17:48:19.578+08:00  INFO 2472 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-10-22T17:48:19.664+08:00  INFO 2472 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#1906f982:0/SimpleConnection@3d195d15 [delegate=amqp://admin@0:0:0:0:0:0:0:1:5672/, localPort=49361]
+2025-10-22T17:48:19.711+08:00  INFO 2472 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.789 seconds (process running for 3.023)
+2025-10-22T17:48:19.735+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T17:48:19.798+08:00  INFO 2472 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T17:48:19.902+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T17:48:19.938+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T17:48:19.940+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T17:48:19.942+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 9
+2025-10-22T17:48:19.942+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T17:48:19.942+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T17:48:19.943+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T17:48:19.953+08:00  INFO 2472 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T17:49:21.596+08:00  INFO 4764 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 4764 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T17:49:21.597+08:00  INFO 4764 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T17:49:22.139+08:00  INFO 4764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T17:49:22.140+08:00  INFO 4764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T17:49:22.156+08:00  INFO 4764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-22T17:49:22.607+08:00  INFO 4764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T17:49:22.615+08:00  INFO 4764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T17:49:22.615+08:00  INFO 4764 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T17:49:22.693+08:00  INFO 4764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T17:49:22.693+08:00  INFO 4764 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1069 ms
+2025-10-22T17:49:23.026+08:00  INFO 4764 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T17:49:23.249+08:00  INFO 4764 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T17:49:23.277+08:00  INFO 4764 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T17:49:23.443+08:00  INFO 4764 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T17:49:23.918+08:00  INFO 4764 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T17:49:23.973+08:00  INFO 4764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T17:49:23.975+08:00  INFO 4764 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-10-22T17:49:24.052+08:00  INFO 4764 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#33c9f1ac:0/SimpleConnection@17b387ef [delegate=amqp://admin@0:0:0:0:0:0:0:1:5672/, localPort=50915]
+2025-10-22T17:49:24.100+08:00  INFO 4764 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.77 seconds (process running for 2.981)
+2025-10-22T17:49:24.123+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T17:49:24.184+08:00  INFO 4764 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T17:49:24.284+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T17:49:24.319+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T17:49:24.321+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T17:49:24.323+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 9
+2025-10-22T17:49:24.323+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T17:49:24.323+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T17:49:24.323+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T17:49:24.334+08:00  INFO 4764 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T17:49:33.630+08:00  INFO 4764 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T17:49:33.630+08:00  INFO 4764 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T17:49:33.631+08:00  INFO 4764 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T17:52:53.303+08:00  INFO 4764 --- [http-nio-8080-exec-10] i.g.t.s.c.SecKillTokenController         : 生成秒杀令牌请求, userId:70, goodsId:3
+2025-10-22T17:52:53.314+08:00  INFO 4764 --- [http-nio-8080-exec-10] i.g.t.s.s.Impl.SecKillTokenServiceImpl   : 生成秒杀令牌成功, userId:70, goodsId:3, token:219d3d40bf944db3866c1183d0c9427a
+2025-10-22T17:55:05.754+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T17:55:05.759+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T17:55:05.815+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T17:55:05.815+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 8
+2025-10-22T17:55:05.822+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T17:55:05.829+08:00  INFO 4764 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022175505235330, 订单ID: 0d57d7b1e9b7412180184c7af5187912, 用户ID: 70, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T19:42:03.620+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x44202426, L:/127.0.0.1:50903 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.626+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x04a3f7de, L:/127.0.0.1:50904 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.628+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x2564a4e7, L:/127.0.0.1:50905 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.628+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0xe73b7e6d, L:/127.0.0.1:50906 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.631+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0xe11a2886, L:/127.0.0.1:50907 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.632+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x924abb6b, L:/127.0.0.1:50908 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.632+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x5a636dbc, L:/127.0.0.1:50909 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.633+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x9c22f6e6, L:/127.0.0.1:50910 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.634+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x2cb898a5, L:/127.0.0.1:50911 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.635+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0xe252293e, L:/127.0.0.1:50912 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:42:03.635+08:00 ERROR 4764 --- [redisson-timer-4-1] o.r.c.handler.PingConnectionHandler      : Unable to send PING command over channel: [id: 0x8030ba93, L:/127.0.0.1:50913 - R:localhost/127.0.0.1:6379]
+
+org.redisson.client.RedisTimeoutException: Command execution timeout for command: (PING), params: [], Redis client: [addr=redis://localhost:6379]
+	at org.redisson.client.RedisConnection.lambda$async$0(RedisConnection.java:256) ~[redisson-3.24.1.jar:3.24.1]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.86.Final.jar:4.1.86.Final]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2025-10-22T19:49:25.642+08:00  INFO 25248 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 25248 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T19:49:25.644+08:00  INFO 25248 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T19:49:26.189+08:00  INFO 25248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T19:49:26.190+08:00  INFO 25248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T19:49:26.205+08:00  INFO 25248 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-22T19:49:26.701+08:00  INFO 25248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T19:49:26.707+08:00  INFO 25248 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T19:49:26.707+08:00  INFO 25248 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T19:49:26.766+08:00  INFO 25248 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T19:49:26.767+08:00  INFO 25248 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1098 ms
+2025-10-22T19:49:27.088+08:00  INFO 25248 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T19:49:27.312+08:00  INFO 25248 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T19:49:27.341+08:00  INFO 25248 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T19:49:27.507+08:00  INFO 25248 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T19:49:27.966+08:00  INFO 25248 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T19:49:28.031+08:00  INFO 25248 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T19:49:28.033+08:00  INFO 25248 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2025-10-22T19:49:28.129+08:00  INFO 25248 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#1e4c4fda:0/SimpleConnection@68fc1e7f [delegate=amqp://admin@0:0:0:0:0:0:0:1:5672/, localPort=61952]
+2025-10-22T19:49:28.174+08:00  INFO 25248 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.802 seconds (process running for 3.024)
+2025-10-22T19:49:28.198+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T19:49:28.252+08:00  INFO 25248 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T19:49:28.350+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T19:49:28.389+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T19:49:28.392+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T19:49:28.394+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 8
+2025-10-22T19:49:28.394+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T19:49:28.394+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T19:49:28.394+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T19:49:28.405+08:00  INFO 25248 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T19:49:44.776+08:00  INFO 25248 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T19:49:44.776+08:00  INFO 25248 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T19:49:44.777+08:00  INFO 25248 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T19:50:05.160+08:00  INFO 25248 --- [http-nio-8080-exec-6] i.g.t.s.c.SecKillTokenController         : 生成秒杀令牌请求, userId:70, goodsId:3
+2025-10-22T19:50:05.170+08:00  INFO 25248 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SecKillTokenServiceImpl   : 生成秒杀令牌成功, userId:70, goodsId:3, token:aa3a4a8674ea415d92ca84fcb57fd76d
+2025-10-22T19:50:30.170+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T19:50:30.173+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T19:50:30.224+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T19:50:30.225+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 7
+2025-10-22T19:50:30.230+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T19:50:30.241+08:00  INFO 25248 --- [http-nio-8080-exec-3] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022195030970176, 订单ID: d6174f16f2494769903050f97ffc8e40, 用户ID: 70, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T19:57:23.814+08:00  INFO 25248 --- [http-nio-8080-exec-7] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T19:57:23.820+08:00  INFO 25248 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T19:57:23.827+08:00  WARN 25248 --- [http-nio-8080-exec-7] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 用户已购买过该商品，用户ID: 70, 商品ID: 3
+2025-10-22T19:57:23.830+08:00 ERROR 25248 --- [http-nio-8080-exec-7] i.g.t.s.c.SeckillOrderController         : 秒杀下单失败，用户ID: 70, 商品ID: 3, 错误: 您已经购买过该商品了
+2025-10-22T19:57:39.354+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T19:57:39.354+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T19:57:39.362+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T19:57:39.364+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 6
+2025-10-22T19:57:39.366+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T19:57:39.371+08:00  INFO 25248 --- [http-nio-8080-exec-8] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022195739076986, 订单ID: 7397b875399347e4a49133c937e74918, 用户ID: 70, 商品ID: 3, 秒杀商品ID: 3
