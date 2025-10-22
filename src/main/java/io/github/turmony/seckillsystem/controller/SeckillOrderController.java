@@ -21,6 +21,11 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class SeckillOrderController {
 
+    /**
+     * 秒杀令牌（一次性）
+     */
+    private String token;
+
     private final SeckillOrderService seckillOrderService;
 
     /**

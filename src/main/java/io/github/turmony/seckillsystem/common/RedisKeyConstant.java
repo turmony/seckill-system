@@ -5,6 +5,10 @@ package io.github.turmony.seckillsystem.common;
  * 统一管理Redis中使用的Key
  */
 public class RedisKeyConstant {
+    /**
+     * 秒杀令牌Key前缀: seckill:token:{userId}:{goodsId}
+     */
+    public static final String SECKILL_TOKEN_PREFIX = "seckill:token:%s:%s";
 
     /**
      * 秒杀商品缓存Key前缀
@@ -61,5 +65,15 @@ public class RedisKeyConstant {
      */
     public static String getSeckillStockKey(Long goodsId) {
         return SECKILL_STOCK_PREFIX + goodsId;
+    }
+
+    /**
+     * 获取秒杀令牌Key
+     * @param userId 用户ID
+     * @param goodsId 商品ID
+     * @return Redis Key
+     */
+    public static String getSeckillTokenKey(Long userId, Long goodsId) {
+        return SECKILL_TOKEN_PREFIX + userId + ":" + goodsId;
     }
 }

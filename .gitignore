@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/logs/seckill-system.log
+/logs/seckill-system.log.2025-10-19.0.gz
+/logs/seckill-system.log.2025-10-20.0.gz

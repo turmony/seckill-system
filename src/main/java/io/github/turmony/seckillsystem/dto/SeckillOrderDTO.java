@@ -1,8 +1,8 @@
 package io.github.turmony.seckillsystem.dto;
 
-
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -18,4 +18,10 @@ public class SeckillOrderDTO implements Serializable {
      */
     @NotNull(message = "商品ID不能为空")
     private Long goodsId;
+
+    /**
+     * 秒杀令牌（一次性Token，防止重复提交）
+     */
+    @NotBlank(message = "秒杀令牌不能为空")
+    private String token;
 }

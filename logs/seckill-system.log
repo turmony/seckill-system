@@ -5289,3 +5289,69 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 2025-10-22T13:28:45.249+08:00  INFO 9912 --- [http-nio-8080-exec-6] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845499238, 订单ID: 0201bb5cb1b048b58d55862875564cb0, 用户ID: 74, 商品ID: 3, 秒杀商品ID: 3
 2025-10-22T13:28:45.258+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
 2025-10-22T13:28:45.262+08:00  INFO 9912 --- [http-nio-8080-exec-13] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022132845771044, 订单ID: 35a3a695fd1d4b738d2e60e95aea1c2a, 用户ID: 73, 商品ID: 3, 秒杀商品ID: 3
+2025-10-22T14:09:51.734+08:00  INFO 17100 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 17100 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T14:09:51.736+08:00  INFO 17100 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T14:09:52.291+08:00  INFO 17100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T14:09:52.293+08:00  INFO 17100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T14:09:52.309+08:00  INFO 17100 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-22T14:09:52.753+08:00  INFO 17100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T14:09:52.759+08:00  INFO 17100 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T14:09:52.759+08:00  INFO 17100 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T14:09:52.818+08:00  INFO 17100 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T14:09:52.818+08:00  INFO 17100 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1053 ms
+2025-10-22T14:09:53.148+08:00  INFO 17100 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T14:09:53.374+08:00  INFO 17100 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T14:09:53.403+08:00  INFO 17100 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T14:09:53.570+08:00  INFO 17100 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T14:09:54.033+08:00  INFO 17100 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T14:09:54.066+08:00  INFO 17100 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T14:09:54.075+08:00  INFO 17100 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.656 seconds (process running for 2.895)
+2025-10-22T14:09:54.095+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T14:09:54.149+08:00  INFO 17100 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T14:09:54.253+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T14:09:54.300+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T14:09:54.302+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T14:09:54.304+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 0
+2025-10-22T14:09:54.304+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T14:09:54.304+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T14:09:54.305+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T14:09:54.322+08:00  INFO 17100 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T14:12:58.980+08:00  INFO 25528 --- [main] i.g.t.seckillsystem.SeckillApplication   : Starting SeckillApplication using Java 17.0.15 with PID 25528 (D:\IDEAProject\seckill-system\target\classes started by Administrator in D:\IDEAProject\seckill-system)
+2025-10-22T14:12:58.982+08:00  INFO 25528 --- [main] i.g.t.seckillsystem.SeckillApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T14:12:59.530+08:00  INFO 25528 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-22T14:12:59.531+08:00  INFO 25528 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-22T14:12:59.548+08:00  INFO 25528 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-22T14:13:00.016+08:00  INFO 25528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-10-22T14:13:00.023+08:00  INFO 25528 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T14:13:00.024+08:00  INFO 25528 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.4]
+2025-10-22T14:13:00.089+08:00  INFO 25528 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T14:13:00.090+08:00  INFO 25528 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1082 ms
+2025-10-22T14:13:00.435+08:00  INFO 25528 --- [main] org.redisson.Version                     : Redisson 3.24.1
+2025-10-22T14:13:00.671+08:00  INFO 25528 --- [redisson-netty-2-5] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T14:13:00.706+08:00  INFO 25528 --- [redisson-netty-2-24] o.r.c.pool.MasterConnectionPool          : 10 connections initialized for localhost/127.0.0.1:6379
+2025-10-22T14:13:00.873+08:00  INFO 25528 --- [main] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本加载成功
+2025-10-22T14:13:01.360+08:00  INFO 25528 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-10-22T14:13:01.393+08:00  INFO 25528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-22T14:13:01.402+08:00  INFO 25528 --- [main] i.g.t.seckillsystem.SeckillApplication   : Started SeckillApplication in 2.695 seconds (process running for 2.913)
+2025-10-22T14:13:01.424+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================开始预热秒杀商品数据到Redis=================
+2025-10-22T14:13:01.481+08:00  INFO 25528 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-10-22T14:13:01.586+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 查询到 3 个秒杀商品，开始预热到Redis
+2025-10-22T14:13:01.633+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 1, 商品名称: 1, 库存: 99
+2025-10-22T14:13:01.636+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 2, 商品名称: 2, 库存: 98
+2025-10-22T14:13:01.637+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热成功 -> 商品ID: 3, 商品名称: 3, 库存: 10
+2025-10-22T14:13:01.637+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : =================秒杀商品数据预热完成=================
+2025-10-22T14:13:01.637+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 预热结果: 总数=3, 成功=3, 失败=0
+2025-10-22T14:13:01.637+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 开始验证Redis预热数据...
+2025-10-22T14:13:01.648+08:00  INFO 25528 --- [main] i.g.t.s.config.SeckillGoodsInitializer   : 验证完成: 成功=3/3
+2025-10-22T14:13:17.821+08:00  INFO 25528 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-22T14:13:17.821+08:00  INFO 25528 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-22T14:13:17.822+08:00  INFO 25528 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-22T14:14:02.512+08:00  WARN 25528 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'userId' for method parameter type Long is not present]
+2025-10-22T14:14:50.513+08:00  INFO 25528 --- [http-nio-8080-exec-5] i.g.t.s.c.SecKillTokenController         : 生成秒杀令牌请求, userId:1, goodsId:1
+2025-10-22T14:14:50.532+08:00  INFO 25528 --- [http-nio-8080-exec-5] i.g.t.s.s.Impl.SecKillTokenServiceImpl   : 生成秒杀令牌成功, userId:1, goodsId:1, token:4511663c21254f1583a4af80836f8e9b
+2025-10-22T14:15:59.944+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.s.c.SeckillOrderController         : 用户下单请求，用户ID: 70, 商品ID: 3
+2025-10-22T14:15:59.953+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 开始秒杀下单，用户ID: 70, 商品ID: 3
+2025-10-22T14:16:00.003+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.seckillsystem.util.LuaScriptUtil   : Lua脚本执行库存扣减，Key: seckill:stock:3, 数量: 1, 结果: 1
+2025-10-22T14:16:00.004+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : Lua脚本扣减Redis库存成功，商品ID: 3, 剩余库存: 9
+2025-10-22T14:16:00.009+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : MySQL库存扣减成功，商品ID: 3
+2025-10-22T14:16:00.020+08:00  INFO 25528 --- [http-nio-8080-exec-9] i.g.t.s.s.Impl.SeckillOrderServiceImpl   : 订单创建成功，订单号: 20251022141600401906, 订单ID: a0267ea9b9a24419aa05a9501df1a6d0, 用户ID: 70, 商品ID: 3, 秒杀商品ID: 3

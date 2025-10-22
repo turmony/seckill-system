@@ -1,6 +1,5 @@
 package io.github.turmony.seckillsystem.vo;
 
-
 import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,7 +14,7 @@ public class SeckillOrderVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 订单ID
+     * 订单ID（数据库主键）
      */
     private Long id;
 
@@ -30,9 +29,16 @@ public class SeckillOrderVO implements Serializable {
     private Long goodsId;
 
     /**
-     * 订单号
+     * 订单号（格式：yyyyMMddHHmmss + 6位随机数）
+     * 示例：20251020214629123456
      */
     private String orderNo;
+
+    /**
+     * ✅ 新增：订单唯一ID（UUID格式，用于支付系统）
+     * 示例：e4f5g6h7i8j9k0l1m2n3o4p5
+     */
+    private String orderId;
 
     /**
      * 商品名称
