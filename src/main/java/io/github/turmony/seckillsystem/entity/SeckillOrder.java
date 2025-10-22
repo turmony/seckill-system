@@ -5,15 +5,21 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * 秒杀订单实体类
+ */
 @Data
 @TableName("seckill_order")
-public class SeckillOrder {
+public class SeckillOrder implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 主键ID
+     * 订单ID（数据库主键）
      */
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -29,22 +35,24 @@ public class SeckillOrder {
     private Long goodsId;
 
     /**
-     * 订单号
-     */
-    private String orderNo;
-
-    /**
      * 秒杀商品ID
      */
     private Long seckillGoodsId;
 
     /**
-     * 订单ID（支付系统用）
+     * 订单号（格式：yyyyMMddHHmmss + 6位随机数）
+     * 示例：20251020214629123456
+     */
+    private String orderNo;
+
+    /**
+     * 订单唯一ID（UUID格式，用于支付系统）
+     * 示例：e4f5g6h7i8j9k0l1m2n3o4p5
      */
     private String orderId;
 
     /**
-     * 商品名称（冗余字段）
+     * 商品名称（冗余字段，提高查询效率）
      */
     private String goodsName;
 
@@ -54,19 +62,14 @@ public class SeckillOrder {
     private BigDecimal seckillPrice;
 
     /**
-     * 订单状态：0-待支付，1-已支付，2-已取消
+     * 订单状态：0-排队中 1-成功 2-失败
      */
     private Integer status;
 
     /**
-     * 秒杀状态：0-秒杀中，1-秒杀成功，2-秒杀失败
+     * 秒杀状态：0-秒杀中 1-秒杀成功 2-秒杀失败
      */
     private Integer seckillStatus;
-
-    /**
-     * 支付时间
-     */
-    private LocalDateTime payTime;
 
     /**
      * 创建时间

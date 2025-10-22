@@ -25,12 +25,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * 秒杀订单服务实现类
- * Step 14改造：集成RabbitMQ异步处理，实现削峰填谷
+ * Step 15改造：新增订单查询功能
  */
 @Slf4j
 @Service
@@ -43,7 +46,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
     private final RedisUtil redisUtil;
     private final LuaScriptUtil luaScriptUtil;
     private final RedissonLockUtil redissonLockUtil;
-    private final MQSender mqSender;  // 新增：消息发送者
+    private final MQSender mqSender;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -88,7 +91,6 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         }
 
         // 3. 检查是否已经购买过（防止重复下单）
-        // 虽然有分布式锁，但数据库也要检查（双重保险）
         SeckillOrder existOrder = seckillOrderMapper.selectOne(
                 new QueryWrapper<SeckillOrder>()
                         .eq("user_id", userId)
@@ -122,7 +124,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
                 new UpdateWrapper<SeckillGoods>()
                         .setSql("stock_count = stock_count - 1")
                         .eq("goods_id", goodsId)
-                        .gt("stock_count", 0)  // 库存必须大于0
+                        .gt("stock_count", 0)
         );
 
         if (updateCount == 0) {
@@ -189,18 +191,6 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 
     /**
      * ✅ Step 14 核心改造：执行秒杀（异步模式）
-     *
-     * 异步秒杀流程：
-     * 1. 校验秒杀时间
-     * 2. 检查是否重复下单
-     * 3. Lua脚本扣减Redis库存
-     * 4. 创建"排队中"状态的订单
-     * 5. 发送MQ消息
-     * 6. 立即返回订单ID（不等待订单处理完成）
-     *
-     * MQ消费者会异步处理：
-     * - 扣减MySQL库存
-     * - 更新订单状态为成功/失败
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -228,9 +218,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
             throw new RuntimeException("秒杀活动已结束");
         }
 
-        log.info("✅ 秒杀时间校验通过");
-
-        // ============ Step 3: 检查是否重复下单 ============
+        // ============ Step 3: 检查是否已经购买过（防止重复下单） ============
         SeckillOrder existOrder = seckillOrderMapper.selectOne(
                 new QueryWrapper<SeckillOrder>()
                         .eq("user_id", userId)
@@ -238,20 +226,11 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         );
 
         if (existOrder != null) {
-            log.warn("❌ 用户已有订单，用户ID: {}, 商品ID: {}, 订单状态: {}",
-                    userId, goodsId, existOrder.getStatus());
-
-            // 如果已有排队中或成功的订单，返回该订单ID
-            if (existOrder.getStatus() == 0 || existOrder.getStatus() == 1) {
-                log.info("返回已存在的订单ID: {}", existOrder.getOrderId());
-                return existOrder.getOrderId();
-            }
-            // 如果之前失败了，允许重新秒杀
+            log.warn("⚠️ 用户已购买过该商品，返回现有订单，用户ID: {}, 商品ID: {}", userId, goodsId);
+            return existOrder.getOrderId();
         }
 
-        log.info("✅ 重复下单检查通过");
-
-        // ============ Step 4: Lua脚本扣减Redis库存 ============
+        // ============ Step 4: 使用Lua脚本原子扣减Redis库存 ============
         String stockKey = RedisKeyConstant.getSeckillStockKey(goodsId);
         Long luaResult = luaScriptUtil.deductStock(stockKey);
 
@@ -265,12 +244,11 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
             throw new RuntimeException("商品已售罄");
         }
 
-        log.info("✅ Lua脚本扣减Redis库存成功，商品ID: {}, 剩余库存: {}",
-                goodsId, redisUtil.getLong(stockKey));
+        log.info("✅ Lua脚本扣减Redis库存成功，商品ID: {}", goodsId);
 
         // ============ Step 5: 创建"排队中"状态的订单 ============
-        String orderId = generateOrderId();
         String orderNo = generateOrderNo();
+        String orderId = generateOrderId();
 
         SeckillOrder order = new SeckillOrder();
         order.setUserId(userId);
@@ -286,7 +264,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         }
 
         order.setSeckillPrice(seckillGoods.getSeckillPrice());
-        order.setStatus(0);  // 0-排队中（等待MQ消费者处理）
+        order.setStatus(0);  // 0-排队中
         order.setSeckillStatus(0);  // 0-秒杀中
         order.setCreateTime(LocalDateTime.now());
 
@@ -332,14 +310,6 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 
     /**
      * ✅ Step 14 新增：处理秒杀订单（MQ消费者调用）
-     *
-     * 此方法由MQ消费者异步调用，完成订单的最终处理
-     *
-     * 处理流程：
-     * 1. 使用Redisson分布式锁（防止重复消费）
-     * 2. 扣减MySQL库存
-     * 3. 更新订单状态为成功或失败
-     * 4. 记录操作日志
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -455,6 +425,109 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
         return convertToVO(order, seckillGoods);
     }
 
+    // ==================== Step 15 新增方法 ====================
+
+    /**
+     * ✅ Step 15: 查询用户的订单列表
+     * 功能：查询指定用户的所有秒杀订单
+     *
+     * @param userId 用户ID
+     * @return 订单列表（按创建时间倒序）
+     */
+    @Override
+    public List<SeckillOrderVO> getUserOrders(Long userId) {
+        log.info("查询用户订单列表，用户ID: {}", userId);
+
+        // 查询用户的所有订单，按创建时间倒序排列
+        List<SeckillOrder> orderList = seckillOrderMapper.selectList(
+                new QueryWrapper<SeckillOrder>()
+                        .eq("user_id", userId)
+                        .orderByDesc("create_time")
+        );
+
+        if (orderList == null || orderList.isEmpty()) {
+            log.info("用户暂无订单，用户ID: {}", userId);
+            return new ArrayList<>();
+        }
+
+        log.info("查询到用户订单数量: {}, 用户ID: {}", orderList.size(), userId);
+
+        // 转换为VO并返回
+        return orderList.stream()
+                .map(this::convertToVOWithGoods)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * ✅ Step 15: 根据状态查询用户的订单列表
+     * 功能：支持按订单状态筛选订单
+     *
+     * @param userId 用户ID
+     * @param status 订单状态：0-排队中 1-成功 2-失败 null-全部
+     * @return 订单列表（按创建时间倒序）
+     */
+    @Override
+    public List<SeckillOrderVO> getUserOrdersByStatus(Long userId, Integer status) {
+        log.info("根据状态查询用户订单列表，用户ID: {}, 状态: {}", userId, status);
+
+        QueryWrapper<SeckillOrder> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+
+        // 如果指定了状态，添加状态筛选条件
+        if (status != null) {
+            queryWrapper.eq("status", status);
+        }
+
+        // 按创建时间倒序排列
+        queryWrapper.orderByDesc("create_time");
+
+        List<SeckillOrder> orderList = seckillOrderMapper.selectList(queryWrapper);
+
+        if (orderList == null || orderList.isEmpty()) {
+            log.info("未查询到符合条件的订单，用户ID: {}, 状态: {}", userId, status);
+            return new ArrayList<>();
+        }
+
+        log.info("查询到订单数量: {}, 用户ID: {}, 状态: {}", orderList.size(), userId, status);
+
+        // 转换为VO并返回
+        return orderList.stream()
+                .map(this::convertToVOWithGoods)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * ✅ Step 15: 查询订单详情（根据订单ID）
+     * 功能：查询指定订单的详细信息，同时验证订单归属
+     *
+     * @param userId 用户ID（用于权限验证）
+     * @param orderId 订单ID
+     * @return 订单详情
+     */
+    @Override
+    public SeckillOrderVO getOrderDetail(Long userId, String orderId) {
+        log.info("查询订单详情，用户ID: {}, 订单ID: {}", userId, orderId);
+
+        // 查询订单（同时验证用户ID和订单ID）
+        SeckillOrder order = seckillOrderMapper.selectOne(
+                new QueryWrapper<SeckillOrder>()
+                        .eq("user_id", userId)
+                        .eq("order_id", orderId)
+        );
+
+        if (order == null) {
+            log.warn("订单不存在或无权访问，用户ID: {}, 订单ID: {}", userId, orderId);
+            return null;
+        }
+
+        log.info("查询到订单详情，订单号: {}, 状态: {}", order.getOrderNo(), order.getStatus());
+
+        // 转换为VO并返回
+        return convertToVOWithGoods(order);
+    }
+
+    // ==================== 私有辅助方法 ====================
+
     /**
      * 生成订单号
      * 格式：yyyyMMddHHmmss + 6位随机数
@@ -475,7 +548,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
     }
 
     /**
-     * 转换为VO
+     * 转换为VO（原有方法，保留用于向后兼容）
      */
     private SeckillOrderVO convertToVO(SeckillOrder order, SeckillGoods seckillGoods) {
         SeckillOrderVO vo = new SeckillOrderVO();
@@ -490,6 +563,37 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
                 vo.setGoodsName(goods.getName());
                 vo.setGoodsImg(goods.getImg());
             }
+        }
+
+        return vo;
+    }
+
+    /**
+     * ✅ Step 15 新增：转换为VO（增强版，自动查询关联商品信息）
+     * 功能：根据订单实体转换为VO，同时查询关联的商品和秒杀商品信息
+     *
+     * @param order 订单实体
+     * @return 订单VO
+     */
+    private SeckillOrderVO convertToVOWithGoods(SeckillOrder order) {
+        SeckillOrderVO vo = new SeckillOrderVO();
+        BeanUtils.copyProperties(order, vo);
+
+        // 查询秒杀商品信息
+        SeckillGoods seckillGoods = seckillGoodsMapper.selectOne(
+                new QueryWrapper<SeckillGoods>().eq("goods_id", order.getGoodsId())
+        );
+
+        if (seckillGoods != null) {
+            // 设置秒杀价格
+            vo.setSeckillPrice(seckillGoods.getSeckillPrice());
+        }
+
+        // 查询商品基本信息
+        Goods goods = goodsMapper.selectById(order.getGoodsId());
+        if (goods != null) {
+            vo.setGoodsName(goods.getName());
+            vo.setGoodsImg(goods.getImg());
         }
 
         return vo;
