@@ -40,6 +40,29 @@ spring:
           max-wait: -1ms
 
   # RabbitMQ配置
+  rabbitmq:
+    host: localhost          # RabbitMQ服务器地址
+    port: 5672              # 端口号
+    username: admin        # 用户名
+    password: 1234         # 密码
+    virtual-host: /         # 虚拟主机
+
+    # 发送确认配置
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+    # 消费者配置
+    listener:
+      simple:
+        acknowledge-mode: manual  # 手动确认模式
+        concurrency: 3           # 最小并发消费者数
+        max-concurrency: 10      # 最大并发消费者数
+        prefetch: 1              # 每次预取消息数
+        retry:
+          enabled: true          # 开启重试
+          max-attempts: 3        # 最大重试次数
+          initial-interval: 1000 # 初始重试间隔(ms)
+  # RabbitMQ配置
 #  rabbitmq:
 #    host: localhost
 #    port: 5672
