@@ -62,19 +62,7 @@ spring:
           enabled: true          # 开启重试
           max-attempts: 3        # 最大重试次数
           initial-interval: 1000 # 初始重试间隔(ms)
-  # RabbitMQ配置
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: admin
-#    password: 1234
-#    virtual-host: /
-#    listener:
-#      simple:
-#        acknowledge-mode: manual  # 手动确认
-#        concurrency: 5
-#        max-concurrency: 10
-#        prefetch: 1
+
 
 # MyBatis-Plus配置
 mybatis-plus:

@@ -1,6 +1,7 @@
 package io.github.turmony.seckillsystem.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.turmony.seckillsystem.common.RateLimit;
 import io.github.turmony.seckillsystem.common.Result;
 import io.github.turmony.seckillsystem.dto.SeckillOrderDTO;
 import io.github.turmony.seckillsystem.service.SeckillGoodsService;
@@ -76,6 +77,7 @@ public class SeckillGoodsController {
      * @return 秒杀结果（订单ID或错误信息）
      */
     @PostMapping("/order")
+    @RateLimit(permitsPerSecond = 1000, message = "秒杀人数过多，请稍后重试")
     public Result<String> seckill(
             @RequestParam Long userId,
             @Valid @RequestBody SeckillOrderDTO orderDTO) {

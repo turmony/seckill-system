@@ -1,5 +1,6 @@
 package io.github.turmony.seckillsystem.controller;
 
+import io.github.turmony.seckillsystem.common.RateLimit;
 import io.github.turmony.seckillsystem.common.Result;
 import io.github.turmony.seckillsystem.dto.SecKillTokenDTO;
 import io.github.turmony.seckillsystem.service.SecKillTokenService;
@@ -27,6 +28,7 @@ public class SecKillTokenController {
      * @return 令牌信息
      */
     @GetMapping("/generate")
+    @RateLimit(permitsPerSecond = 500, message = "请求过于频繁")
     public Result<SecKillTokenDTO> generateToken(
             @RequestParam Long userId,
             @RequestParam Long goodsId) {
