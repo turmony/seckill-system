@@ -28,43 +28,71 @@ public class WebConfig implements WebMvcConfigurer {
 
         // 注册登录拦截器
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")                  // 拦截所有路径
+                .addPathPatterns("/**")
                 .excludePathPatterns(
-                        // 用户相关
-                        "/user/register",                // 放行注册接口
-                        "/user/login",                   // 放行登录接口
-                        "/api/user/register",
-                        "/api/user/login",
+                        // ⭐ 错误页面（重要！）
+                        "/error",
 
-                        // 商品相关（无需登录即可查看）
-                        "/goods/list",                   // 放行商品列表
-                        "/goods/detail/**",              // 放行商品详情
-                        "/api/goods/list",
+                        // 用户相关
+                        "/user/register/**",
+                        "/user/login/**",
+                        "/api/user/register/**",
+                        "/api/user/login/**",
+
+                        // 商品相关
+                        "/goods/list/**",
+                        "/goods/detail/**",
+                        "/api/goods/list/**",
                         "/api/goods/detail/**",
 
-                        // 秒杀相关（无需登录即可查看列表和详情）
-                        "/seckill/list",                 // 放行秒杀商品列表
-                        "/seckill/detail/**",            // 放行秒杀商品详情
-                        "/api/seckill/list",
+                        // 秒杀相关
+                        "/seckill/list/**",
+                        "/seckill/detail/**",
+                        "/api/seckill/list/**",
                         "/api/seckill/detail/**",
 
-                        // 管理接口（可根据需要添加权限控制）
+                        // 测试接口
+                        "/test/**",
+                        "/api/test/**",
+
+                        // 管理接口
                         "/admin/**",
 
-                        // Swagger等（如果有）
+                        // Swagger
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
                 );
 
         // 注册签名验证拦截器
         registry.addInterceptor(signInterceptor)
-                .addPathPatterns("/**")                  // 拦截所有路径
+                .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/error",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
                         "/v3/api-docs/**",
-                        // 签名相关接口不需要验证签名（用于生成签名和测试）
+
+                        // ===== 新增：测试接口（用于负载均衡验证） =====
+                        "/test/**",
+                        "/api/test/**",
+
+                        // ===== 新增：基础接口（方便测试） =====
+                        "/user/register/**",
+                        "/user/login/**",
+                        "/api/user/register/**",
+                        "/api/user/login/**",
+
+                        "/goods/list/**",
+                        "/api/goods/list/**",
+                        "/goods/detail/**",
+                        "/api/goods/detail/**",
+
+                        "/seckill/list/**",
+                        "/api/seckill/list/**",
+                        "/seckill/detail/**",
+                        "/api/seckill/detail/**",
+                        // =========================================
+
                         "/api/sign/**",
                         "/api/test/noSign"
                 );
