@@ -4,18 +4,35 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
+
+@Component
 public class JwtUtil {
 
     // 密钥（建议放在配置文件中）
-    private static final String SECRET_KEY = "your-secret-key-at-least-256-bits-long-for-hs256-algorithm";
+    private static String SECRET_KEY;
 
     // 过期时间：7天
-    private static final long EXPIRATION_TIME = 7 * 24 * 60 * 60 * 1000;
+    private static long EXPIRATION_TIME;
+
+
+    // 非静态setter方法：通过@Value从配置文件注入密钥，并赋值给静态字段
+    @Value("${spring.jwt.secret-key}")
+    public void setSecretKey(String secretKey) {
+        SECRET_KEY = secretKey;
+    }
+
+    // 非静态setter方法：通过@Value从配置文件注入过期时间，并赋值给静态字段
+    @Value("${spring.jwt.expiration-time}")
+    public void setExpirationTime(long expirationTime) {
+        EXPIRATION_TIME = expirationTime;
+    }
 
     // 生成密钥
     private static SecretKey getSigningKey() {
