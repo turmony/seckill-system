@@ -2,6 +2,7 @@ package io.github.turmony.seckillsystem.util;
 
 
 import cn.hutool.crypto.digest.DigestUtil;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * MD5加密工具类
@@ -11,7 +12,12 @@ public class MD5Util {
     /**
      * 盐值（固定，用于加密）
      */
-    private static final String SALT = "seckill@2024#salt";
+    private static String SALT;
+
+    @Value("${spring.MD5.salt}")
+    public void setSecretKey(String salt) {
+        SALT = salt;
+    }
 
     /**
      * MD5加密（带盐值）

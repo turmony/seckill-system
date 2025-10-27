@@ -5,7 +5,9 @@ spring:
   application:
     name: seckill-system
 
-  # application.yml
+  MD5:
+    salt: "seckill@2024#salt"
+
   jwt:
     # 密钥（需至少256位/32字节，实际使用时建议随机生成）
     secret-key: "your-32bytes-secure-secret-key-for-hs256-example-123456"
