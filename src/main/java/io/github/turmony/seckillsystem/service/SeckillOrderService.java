@@ -10,13 +10,6 @@ import java.util.List;
  */
 public interface SeckillOrderService {
 
-    /**
-     * 创建订单（基础版，同步模式）
-     * @param userId 用户ID
-     * @param orderDTO 下单请求参数
-     * @return 订单信息
-     */
-    SeckillOrderVO createOrder(Long userId, SeckillOrderDTO orderDTO);
 
     /**
      * 查询用户在指定商品的订单

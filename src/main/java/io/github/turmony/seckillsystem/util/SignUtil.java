@@ -2,6 +2,7 @@ package io.github.turmony.seckillsystem.util;
 
 import cn.hutool.crypto.digest.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -18,12 +19,17 @@ public class SignUtil {
     /**
      * 签名密钥（生产环境应该配置在配置文件中）
      */
-    private static final String SIGN_SALT = "seckill_system_secret_key_2024";
+    private static String SIGN_SALT;
 
     /**
      * 签名有效期（毫秒）- 5分钟
      */
     private static final long SIGN_VALID_TIME = 5 * 60 * 1000;
+
+    @Value("${spring.sign.sign_salt}")
+    public void setSignSalt(String signSalt) {
+        SIGN_SALT = signSalt;
+    }
 
     /**
      * 生成签名
